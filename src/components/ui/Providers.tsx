@@ -17,7 +17,6 @@ const StaffView = dynamic(() => import("@/components/picks/StaffView").then((m) 
 
 const Surprise = dynamic(() => import("@/components/menu/Surprise").then((m) => m.Surprise), { ssr: false });
 const Toast = dynamic(() => import("@/components/ui/Toast").then((m) => m.Toast), { ssr: false });
-const BeanCursor = dynamic(() => import("./BeanCursor").then((m) => m.BeanCursor), { ssr: false });
 
 const features = () => import("./motion-features").then((m) => m.default);
 
@@ -37,7 +36,6 @@ export function Providers({ children }: { children: ReactNode }) {
                 <StaffView />
                 <Surprise />
                 <Toast />
-                <BeanCursor />
               </SurpriseProvider>
             </ItemSheetProvider>
           </PicksProvider>

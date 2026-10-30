@@ -2,27 +2,20 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, m } from "motion/react";
-import { DiceFiveIcon, FireIcon, MagnifyingGlassIcon, SnowflakeIcon, SquaresFourIcon, StarIcon, XIcon, CoffeeIcon, ForkKnifeIcon, WindIcon } from "@phosphor-icons/react/dist/ssr";
+import { MagnifyingGlassIcon, ShuffleIcon, SquaresFourIcon, XIcon } from "@phosphor-icons/react/dist/ssr";
 import { menu, type MenuItem } from "@/data/menu";
 import { useSmoothScroll } from "@/components/ui/SmoothScroll";
-import { Mascot } from "@/components/ui/Mascot";
-import { SectionSticker, sectionStyle } from "@/components/ui/SectionIcon";
+import { SectionGlyph } from "@/components/ui/SectionIcon";
 import { useSurprise } from "@/lib/surprise";
 import { ItemRow } from "./ItemRow";
 import { SectionSheet } from "./SectionSheet";
 
 type Filter = "all" | "popular" | "hot" | "cold";
-const filters = [
-  { id: "all" as const, label: "All", Icon: SquaresFourIcon },
-  { id: "popular" as const, label: "Popular", Icon: StarIcon },
-  { id: "hot" as const, label: "Hot drinks", Icon: FireIcon },
-  { id: "cold" as const, label: "Cold drinks", Icon: SnowflakeIcon },
-];
-
-const categoryCards = [
-  { id: "food", Icon: ForkKnifeIcon, bg: "bg-marmalade", rot: "-rotate-1" },
-  { id: "beverages", Icon: CoffeeIcon, bg: "bg-pistachio", rot: "rotate-1" },
-  { id: "tobacco", Icon: WindIcon, bg: "bg-blush", rot: "-rotate-1" },
+const filters: { id: Filter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "popular", label: "Popular" },
+  { id: "hot", label: "Hot drinks" },
+  { id: "cold", label: "Cold drinks" },
 ];
 
 const normalise = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -94,41 +87,25 @@ export function MenuBrowser() {
 
   return (
     <>
-      <div ref={intro} className="relative mx-auto max-w-[100rem] px-4 pt-22 md:px-8 md:pt-28">
-        <div className="flex items-end justify-between gap-2">
-          <h1 className="display text-[3.5rem] md:text-[7rem]">
-            What’s it <span className="accent">gonna</span> be?
-          </h1>
-          <Mascot className="bob w-20 shrink-0 md:w-32" />
-        </div>
+      <div ref={intro} className="relative mx-auto max-w-[110rem] px-4 pt-24 md:px-8 md:pt-32">
+        <h1 className="display text-[5.5rem] md:text-[11rem]">
+          The <span className="accent text-[0.85em]">menu</span>
+        </h1>
 
-        <ul className="mt-5 grid grid-cols-3 gap-2 md:max-w-3xl md:gap-4">
-          {categoryCards.map((c) => {
-            const cat = menu.find((x) => x.id === c.id)!;
-            const total = cat.sections.reduce((n, s) => n + s.items.length, 0);
-            return (
-              <li key={c.id}>
-                <m.button
-                  type="button"
-                  whileHover={{ y: -4, rotate: 0 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => go(cat.sections[0].id)}
-                  className={`flex h-full w-full flex-col items-start gap-3 rounded-tile border-2 border-ink p-3 text-left shadow-hard-sm md:p-4 ${c.bg} ${c.rot}`}
-                >
-                  <c.Icon size={34} weight="duotone" aria-hidden />
-                  <span>
-                    <span className="block text-[0.9375rem] font-extrabold leading-tight md:text-lg">{cat.name}</span>
-                    <span className="block text-[0.75rem] font-medium">{total} items</span>
-                  </span>
-                </m.button>
-              </li>
-            );
-          })}
+        <ul className="mt-4 grid gap-x-8 border-b border-line md:grid-cols-3">
+          {menu.map((cat) => (
+            <li key={cat.id} className="border-t border-line">
+              <button type="button" onClick={() => go(cat.sections[0].id)} className="group flex min-h-14 w-full items-baseline justify-between gap-3 py-2.5 text-left">
+                <span className="serif text-[1.625rem] leading-tight underline-offset-4 group-hover:underline">{cat.name}</span>
+                <span className="text-[0.8125rem] tabular-nums text-roast">{cat.sections.reduce((n, sec) => n + sec.items.length, 0)} items</span>
+              </button>
+            </li>
+          ))}
         </ul>
 
-        <div className="mt-4 flex flex-col gap-2 md:flex-row md:items-center">
+        <div className="mt-4 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           <div className="relative md:w-80">
-            <MagnifyingGlassIcon size={20} weight="bold" aria-hidden className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2" />
+            <MagnifyingGlassIcon size={20} weight="light" aria-hidden className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" />
             <label htmlFor="menu-search" className="sr-only">
               Search the menu
             </label>
@@ -137,46 +114,44 @@ export function MenuBrowser() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Croissant, matcha, pizza…"
-              className="h-12 w-full rounded-full border-2 border-ink bg-paper pl-11 pr-11 font-medium placeholder:text-roast [&::-webkit-search-cancel-button]:hidden"
+              placeholder="Croissant, matcha, pizza"
+              className="h-12 w-full rounded-tile border border-line bg-paper pl-11 pr-11 placeholder:text-roast [&::-webkit-search-cancel-button]:hidden"
             />
             {query && (
-              <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="absolute right-0.5 top-0.5 flex size-11 items-center justify-center rounded-full">
-                <XIcon size={18} weight="bold" aria-hidden />
+              <button type="button" onClick={() => setQuery("")} aria-label="Clear search" className="absolute right-0.5 top-0.5 flex size-11 items-center justify-center">
+                <XIcon size={18} aria-hidden />
               </button>
             )}
           </div>
-          <div role="group" aria-label="Filter the menu" className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-1 md:mx-0 md:px-0">
+          <div role="group" aria-label="Filter the menu" className="no-scrollbar -mx-4 flex gap-1 overflow-x-auto px-4 md:mx-0 md:px-0">
             {filters.map((f) => (
-              <m.button
+              <button
                 key={f.id}
                 type="button"
-                whileTap={{ scale: 0.92 }}
                 aria-pressed={filter === f.id}
                 onClick={() => setFilter(f.id)}
-                className={`flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border-2 border-ink px-3.5 text-[0.875rem] font-semibold transition-colors ${filter === f.id ? "bg-ink text-cream" : "bg-paper hover:bg-butter"}`}
+                className={`min-h-11 shrink-0 rounded-tile px-3.5 text-[0.9375rem] transition-colors duration-300 ${filter === f.id ? "bg-ink text-cream" : "hover:bg-sand"}`}
               >
-                <f.Icon size={16} weight="duotone" aria-hidden /> {f.label}
-              </m.button>
+                {f.label}
+              </button>
             ))}
-            <m.button type="button" whileTap={{ scale: 0.92 }} onClick={surprise} className="hidden min-h-11 shrink-0 items-center gap-1.5 rounded-full border-2 border-ink bg-butter px-3.5 text-[0.875rem] font-bold md:flex">
-              <DiceFiveIcon size={18} weight="duotone" aria-hidden /> Surprise me
-            </m.button>
+            <button type="button" onClick={surprise} className="hidden min-h-11 shrink-0 items-center gap-1.5 rounded-tile px-3.5 text-[0.9375rem] transition-colors duration-300 hover:bg-sand md:flex">
+              <ShuffleIcon size={18} weight="light" aria-hidden /> Surprise me
+            </button>
           </div>
         </div>
       </div>
 
       {/* Sticky section bar on phones and tablets */}
-      <div data-sticky-bar className="sticky top-0 z-30 mt-3 border-y-2 border-ink bg-cream transition-[top] duration-300 lg:hidden [body:has([data-site-header][data-hidden=false])_&]:top-[4.25rem] md:[body:has([data-site-header][data-hidden=false])_&]:top-[5rem]">
+      <div data-sticky-bar className="sticky top-0 z-30 mt-3 border-y border-line bg-cream/95 backdrop-blur-md transition-[top] duration-300 lg:hidden [body:has([data-site-header][data-hidden=false])_&]:top-16 md:[body:has([data-site-header][data-hidden=false])_&]:top-20">
         <nav aria-label="Menu sections" className="flex items-center">
-          <button type="button" onClick={() => setSheet(true)} aria-label="Show all sections" className="flex h-13 shrink-0 items-center gap-1.5 border-r-2 border-ink bg-butter px-3 text-[0.8125rem] font-bold">
-            <SquaresFourIcon size={20} weight="duotone" aria-hidden /> All
+          <button type="button" onClick={() => setSheet(true)} aria-label="Show all sections" className="flex h-12 shrink-0 items-center gap-1.5 border-r border-line px-3 text-[0.875rem]">
+            <SquaresFourIcon size={20} weight="light" aria-hidden /> All
           </button>
           <div ref={tabs} className="no-scrollbar relative flex items-center gap-1 overflow-x-auto px-2">
             {results.flatMap((c) =>
               c.sections.map((s) => {
                 const on = s.id === current;
-                const { Icon } = sectionStyle[s.id];
                 return (
                   <button
                     key={s.id}
@@ -184,11 +159,10 @@ export function MenuBrowser() {
                     data-tab={s.id}
                     aria-current={on ? "true" : undefined}
                     onClick={() => go(s.id)}
-                    className="relative my-1.5 flex h-10 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 text-[0.875rem] font-semibold capitalize"
+                    className={`relative h-12 shrink-0 whitespace-nowrap px-3 text-[0.9375rem] capitalize transition-colors ${on ? "text-ink" : "text-roast"}`}
                   >
-                    {on && <m.span layoutId="tab-pill" className="absolute inset-0 rounded-full border-2 border-ink bg-marmalade" transition={{ type: "spring", stiffness: 420, damping: 32 }} />}
-                    <Icon size={18} weight="duotone" aria-hidden className="relative" />
-                    <span className="relative">{s.name}</span>
+                    {s.name}
+                    {on && <m.span layoutId="tab-line" className="absolute inset-x-3 bottom-0 h-0.5 bg-ink" transition={{ type: "spring", stiffness: 380, damping: 40 }} />}
                   </button>
                 );
               }),
@@ -197,20 +171,20 @@ export function MenuBrowser() {
         </nav>
       </div>
 
-      <div className="mx-auto max-w-[100rem] px-4 pb-32 pt-4 md:px-8 lg:grid lg:grid-cols-[16rem_1fr] lg:gap-10 lg:pt-8">
+      <div className="mx-auto max-w-[110rem] px-4 pb-28 pt-4 md:px-8 lg:grid lg:grid-cols-[15rem_1fr] lg:gap-14 lg:pt-8">
         {/* Sidebar on large screens: every section always in view */}
         <aside className="hidden lg:block">
           <nav ref={side} aria-label="Menu sections" data-lenis-prevent className="no-scrollbar sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-1">
             {results.map((c) => (
               <div key={c.id} className="mb-4">
-                <p className="eyebrow mb-1 px-2">{c.name}</p>
+                <p className="eyebrow mb-2 text-roast">{c.name}</p>
                 <ul>
                   {c.sections.map((s) => {
                     const on = s.id === current;
                     return (
                       <li key={s.id}>
-                        <button type="button" onClick={() => go(s.id)} aria-current={on ? "true" : undefined} className={`flex w-full items-center gap-2 rounded-full border-2 px-2 py-1 text-left text-[0.9375rem] font-semibold capitalize transition-colors ${on ? "border-ink bg-marmalade" : "border-transparent hover:bg-butter"}`}>
-                          <SectionSticker id={s.id} size={16} className="size-7 !border" />
+                        <button type="button" onClick={() => go(s.id)} aria-current={on ? "true" : undefined} className={`flex w-full items-center gap-2.5 py-1 text-left text-[0.9375rem] capitalize transition-colors ${on ? "font-medium text-ink" : "text-roast hover:text-ink"}`}>
+                          <SectionGlyph id={s.id} size={18} />
                           {s.name}
                         </button>
                       </li>
@@ -228,16 +202,15 @@ export function MenuBrowser() {
           </p>
 
           {count === 0 && (
-            <div className="flex flex-col items-center py-16 text-center">
-              <Mascot mood="wow" className="w-28" />
-              <h2 className="display mt-4 text-[2.25rem]">Nothing by that name</h2>
-              <p className="mt-1 font-medium text-roast">Try another word, or roll the dice.</p>
-              <div className="mt-5 flex flex-wrap justify-center gap-3">
-                <button type="button" onClick={() => { setQuery(""); setFilter("all"); }} className="btn bg-butter">
-                  Clear search
+            <div className="py-16">
+              <h2 className="display text-[4rem] md:text-[6rem]">Nothing <span className="accent text-[0.85em]">by that name</span></h2>
+              <p className="mt-2 text-roast">Try another word, or let us choose for you.</p>
+              <div className="mt-6 flex flex-wrap items-center gap-6">
+                <button type="button" onClick={surprise} className="btn bg-ink text-cream">
+                  <ShuffleIcon size={18} aria-hidden /> Surprise me
                 </button>
-                <button type="button" onClick={surprise} className="btn bg-marmalade">
-                  <DiceFiveIcon size={20} weight="duotone" aria-hidden /> Surprise me
+                <button type="button" onClick={() => { setQuery(""); setFilter("all"); }} className="border-b border-ink pb-0.5">
+                  Clear search
                 </button>
               </div>
             </div>
@@ -245,26 +218,24 @@ export function MenuBrowser() {
 
           {results.map((c) => (
             <div key={c.id}>
-              {c.sections.map((s) => {
-                const { bg } = sectionStyle[s.id];
-                return (
-                  <section key={s.id} id={s.id} data-menu-section aria-labelledby={`${s.id}-h`} className="mb-8 scroll-mt-16 md:scroll-mt-20 lg:scroll-mt-4">
-                    <div className={`mb-3 flex items-center justify-between gap-3 rounded-tile border-2 border-ink px-3 py-2.5 md:px-5 md:py-4 ${bg}`}>
-                      <h2 id={`${s.id}-h`} className="display text-[1.875rem] capitalize md:text-[3rem]">
-                        {s.name}
-                      </h2>
-                      <SectionSticker id={s.id} size={26} className="size-11 bg-paper md:size-14" />
-                    </div>
-                    <ul className="grid gap-2.5 md:grid-cols-2 md:gap-3 2xl:grid-cols-3">
-                      {s.items.map((item, i) => (
-                        <li key={item.id}>
-                          <ItemRow item={item} priority={s.id === firstSection && i < 3} />
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                );
-              })}
+              <p className="eyebrow pb-1 pt-6 text-roast first:pt-2">{c.name}</p>
+              {c.sections.map((s) => (
+                <section key={s.id} id={s.id} data-menu-section aria-labelledby={`${s.id}-h`} className="mb-10 scroll-mt-16 md:mb-14 md:scroll-mt-20 lg:scroll-mt-4">
+                  <div className="flex items-end justify-between gap-3 border-b border-ink pb-2">
+                    <h2 id={`${s.id}-h`} className="display text-[3.25rem] capitalize md:text-[5rem]">
+                      {s.name}
+                    </h2>
+                    <SectionGlyph id={s.id} size={30} className="mb-2 text-roast" />
+                  </div>
+                  <ul className="grid md:grid-cols-2 md:gap-x-8 2xl:grid-cols-3">
+                    {s.items.map((item, i) => (
+                      <li key={item.id}>
+                        <ItemRow item={item} priority={s.id === firstSection && i < 3} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
             </div>
           ))}
         </div>

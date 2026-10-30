@@ -2,39 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, m } from "motion/react";
+import { CheckIcon } from "@phosphor-icons/react/dist/ssr";
 import { usePicks } from "@/lib/picks";
-import { Mascot } from "./Mascot";
 
-const lines = ["Nice pick!", "Great taste.", "Ooh, good one.", "Yes please.", "Chef’s kiss."];
-
-// A small cheer from Chi when something lands on the list.
+// Quiet confirmation when something lands on the list.
 export function Toast() {
   const { bump } = usePicks();
-  const [text, setText] = useState<string | null>(null);
+  const [show, setShow] = useState(false);
   const first = useRef(true);
   useEffect(() => {
     if (first.current) {
       first.current = false;
       return;
     }
-    // Triggered by an external counter changing, so a state update here is deliberate.
-    setText(lines[bump % lines.length]);
-    const id = window.setTimeout(() => setText(null), 1600);
+    setShow(true);
+    const id = window.setTimeout(() => setShow(false), 1500);
     return () => window.clearTimeout(id);
   }, [bump]);
   return (
-    <div role="status" className="pointer-events-none fixed inset-x-0 bottom-24 z-[60] flex justify-center md:bottom-8">
+    <div role="status" className="pointer-events-none fixed inset-x-0 bottom-20 z-[60] flex justify-center md:bottom-8">
       <AnimatePresence>
-        {text && (
-          <m.div
-            initial={{ y: 40, opacity: 0, rotate: -5 }}
-            animate={{ y: 0, opacity: 1, rotate: 0 }}
-            exit={{ y: 20, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 420, damping: 22 }}
-            className="flex items-center gap-2 rounded-full border-2 border-ink bg-butter py-1 pl-2 pr-5 font-bold text-ink shadow-hard-sm"
-          >
-            <Mascot mood="wink" steam={false} className="w-9" />
-            {text}
+        {show && (
+          <m.div initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 8, opacity: 0 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }} className="flex items-center gap-2 rounded-tile bg-ink px-4 py-2.5 text-[0.9375rem] text-cream shadow-float">
+            <CheckIcon size={16} aria-hidden /> Added to your list
           </m.div>
         )}
       </AnimatePresence>

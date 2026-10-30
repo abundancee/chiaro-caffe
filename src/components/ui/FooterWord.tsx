@@ -7,12 +7,12 @@ import { useScene } from "@/lib/use-scene";
 export function FooterWord() {
   const root = useRef<HTMLDivElement>(null);
   useScene(root, ({ gsap }, el) => {
-    gsap.from(el.querySelectorAll("span"), { yPercent: 95, fontStretch: "50%", stagger: 0.06, ease: "none", scrollTrigger: { trigger: el, start: "top 100%", end: "bottom 98%", scrub: 0.6 } });
+    gsap.from(el.querySelectorAll("span"), { yPercent: 95, stagger: 0.05, ease: "none", scrollTrigger: { trigger: el, start: "top 100%", end: "bottom 98%", scrub: 0.8 } });
   });
   return (
     <div ref={root} aria-hidden className="flex select-none justify-center overflow-hidden leading-none">
       {"CHIARO".split("").map((l, i) => (
-        <span key={i} className="display inline-block text-[30.5vw] leading-[0.82] text-marmalade 3xl:text-[27vw]">
+        <span key={i} className="display inline-block text-[37vw] leading-[0.86] text-cream md:text-[25vw] md:[font-stretch:100%]">
           {l}
         </span>
       ))}

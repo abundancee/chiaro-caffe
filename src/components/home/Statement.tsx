@@ -17,30 +17,23 @@ const parts: Part[] = [
   "Pull up a chair and take your time.",
 ];
 
-// Each word lights up as you scroll, while tiny photos open up inside the sentence.
+// Each word lights up as you scroll, while small photos open inside the sentence.
 export function Statement() {
   const root = useRef<HTMLElement>(null);
   useScene(root, ({ gsap }, el) => {
     const q = gsap.utils.selector(el);
-    const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top top", end: "+=170%", scrub: 0.4, pin: true, anticipatePin: 1 } });
+    const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top top", end: "+=170%", scrub: 0.6, pin: true, anticipatePin: 1 } });
     q("[data-piece]").forEach((p: HTMLElement, i: number) => {
-      if (p.dataset.piece === "img") tl.from(p, { width: 0, scale: 0, rotate: -30, ease: "back.out(2)", duration: 3 }, i * 0.45);
-      else tl.fromTo(p, { opacity: 0.14 }, { opacity: 1, ease: "none", duration: 1 }, i * 0.45);
+      if (p.dataset.piece === "img") tl.from(p, { width: 0, opacity: 0, ease: "power3.out", duration: 3 }, i * 0.45);
+      else tl.fromTo(p, { opacity: 0.16 }, { opacity: 1, ease: "none", duration: 1 }, i * 0.45);
     });
-    tl.to(q("[data-spinner]"), { rotate: 360, ease: "none", duration: tl.duration() }, 0);
   });
 
   return (
-    <section ref={root} id="about" aria-label="About Chiaro" className="relative flex min-h-[100svh] items-center overflow-hidden bg-butter px-4 py-24 md:px-8">
-      <svg data-spinner aria-hidden viewBox="0 0 200 200" className="absolute -right-16 -top-16 w-52 text-marmalade md:-right-14 md:-top-14 md:w-64">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <rect key={i} x="94" y="6" width="12" height="44" rx="6" fill="currentColor" transform={`rotate(${i * 30} 100 100)`} />
-        ))}
-        <circle cx="100" cy="100" r="40" fill="currentColor" />
-      </svg>
-      <div className="relative mx-auto max-w-[76rem]">
-        <p className="eyebrow mb-5">About</p>
-        <h2 className="display text-[clamp(2.5rem,6.6vw,6.5rem)] leading-[1.02]">
+    <section ref={root} id="about" aria-label="About Chiaro" className="relative flex min-h-[100svh] items-center overflow-hidden bg-cream px-4 py-24 md:px-8">
+      <div className="relative mx-auto w-full max-w-[76rem]">
+        <p className="eyebrow mb-6 text-roast">About</p>
+        <h2 className="serif text-[clamp(2.375rem,6vw,5.75rem)] font-normal leading-[1.1] tracking-[-0.01em]">
           {parts.map((p, i) =>
             typeof p === "string" ? (
               p.split(" ").map((w, j) => (
@@ -49,13 +42,13 @@ export function Statement() {
                 </span>
               ))
             ) : (
-              <span key={p.src} data-piece="img" className="sticker relative mx-1 inline-block h-[0.82em] w-[1.15em] rotate-[-5deg] align-[-0.08em] [border-width:3px]">
-                <Photo src={p.src} alt={p.alt} fill sizes="130px" className="object-cover" />
+              <span key={p.src} data-piece="img" className="sticker relative mx-1 inline-block h-[0.74em] w-[1.2em] align-[-0.04em]">
+                <Photo src={p.src} alt={p.alt} fill sizes="120px" className="object-cover" />
               </span>
             ),
           )}
         </h2>
-        <p className="mt-8">
+        <p className="mt-8 text-roast">
           <Placeholder>[BRAND STORY: founders and history, from the café]</Placeholder>
         </p>
       </div>

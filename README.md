@@ -1,6 +1,6 @@
 # Chiaro Caffé website
 
-Built with Next.js (App Router), TypeScript, Tailwind CSS, Motion, GSAP and Lenis. The page moves through a day at Chiaro as you scroll. All motion switches off for visitors who ask for reduced motion.
+Built with Next.js (App Router), TypeScript, Tailwind CSS, Motion, GSAP and Lenis. The page moves through a day at Chiaro as you scroll. All scroll and page motion switches off for visitors who ask for reduced motion.
 
 ## Run it locally
 

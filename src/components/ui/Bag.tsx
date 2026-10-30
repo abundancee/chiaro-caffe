@@ -1,10 +1,10 @@
 "use client";
 
 import { m } from "motion/react";
-import { ShoppingBagOpenIcon } from "@phosphor-icons/react/dist/ssr";
+import { ToteIcon } from "@phosphor-icons/react/dist/ssr";
 import { usePicks } from "@/lib/picks";
 
-// The list button. Bounces each time something lands in it.
+// The list button. Gives a small nudge each time something lands in it.
 export function BagButton({ className = "" }: { className?: string }) {
   const { count, bump, ready, setDrawerOpen } = usePicks();
   return (
@@ -15,26 +15,13 @@ export function BagButton({ className = "" }: { className?: string }) {
       aria-label={`Open my picks, ${ready ? count : 0} ${count === 1 ? "item" : "items"}`}
       className={`relative flex items-center justify-center ${className}`}
     >
-      <m.span
-        key={bump}
-        initial={bump ? { scale: 0.6, rotate: -18 } : false}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: "spring", stiffness: 520, damping: 13 }}
-        className="flex"
-      >
-        <ShoppingBagOpenIcon size={26} weight="duotone" aria-hidden />
+      <m.span key={bump} initial={bump ? { scale: 0.86 } : false} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 420, damping: 24 }} className="flex">
+        <ToteIcon size={24} weight="light" aria-hidden />
       </m.span>
       {ready && count > 0 && (
-        <m.span
-          key={`c${count}`}
-          aria-hidden
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 600, damping: 15 }}
-          className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full border-2 border-ink bg-marmalade px-1 text-[0.6875rem] font-bold tabular-nums text-ink"
-        >
+        <span aria-hidden className="absolute right-0 top-0 flex h-[1.125rem] min-w-[1.125rem] items-center justify-center rounded-full bg-terracotta px-1 text-[0.6875rem] font-medium tabular-nums text-ink">
           {count}
-        </m.span>
+        </span>
       )}
     </button>
   );

@@ -8,7 +8,7 @@ export function flyToBag(source: HTMLElement | null) {
   const clone = source.cloneNode(true) as HTMLElement;
   Object.assign(clone.style, {
     position: "fixed", left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px`,
-    margin: "0", zIndex: "90", borderRadius: "14px", overflow: "hidden", pointerEvents: "none",
+    margin: "0", zIndex: "90", borderRadius: "6px", overflow: "hidden", pointerEvents: "none",
   });
   document.body.appendChild(clone);
   const dx = to.left + to.width / 2 - (from.left + from.width / 2);
@@ -17,10 +17,10 @@ export function flyToBag(source: HTMLElement | null) {
     .animate(
       [
         { transform: "translate(0,0) scale(1) rotate(0deg)", opacity: 1 },
-        { transform: `translate(${dx * 0.45}px, ${dy * 0.3 - 90}px) scale(.8) rotate(-14deg)`, opacity: 1, offset: 0.5 },
-        { transform: `translate(${dx}px, ${dy}px) scale(.14) rotate(14deg)`, opacity: 0.6 },
+        { transform: `translate(${dx * 0.45}px, ${dy * 0.3 - 50}px) scale(.8) rotate(-4deg)`, opacity: 1, offset: 0.5 },
+        { transform: `translate(${dx}px, ${dy}px) scale(.14) rotate(4deg)`, opacity: 0.6 },
       ],
-      { duration: 620, easing: "cubic-bezier(.45,.05,.3,1)" },
+      { duration: 700, easing: "cubic-bezier(.45,.05,.3,1)" },
     )
     .finished.finally(() => clone.remove());
 }
