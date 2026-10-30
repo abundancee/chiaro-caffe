@@ -9,7 +9,7 @@ import { useScene } from "@/lib/use-scene";
 import { site } from "@/data/site";
 
 const lines = [
-  <>From first <em className="accent">croissant</em></>,
+  <>From first <em className="accent">croissant</em>{" "}</>,
   <>to last <em className="accent">cocktail.</em></>,
 ];
 
