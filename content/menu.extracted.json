@@ -1,0 +1,1450 @@
+{
+  "source": "https://menu.omegasoftware.ca/chiarocaffe",
+  "currency": "NGN",
+  "categories": [
+    {
+      "name": "Food",
+      "menus": [
+        {
+          "id": 1,
+          "name": "Vibrants & Fresh Salads",
+          "groups": [
+            {
+              "id": 1,
+              "name": "Vibrant Salads",
+              "items": [
+                {
+                  "id": 77,
+                  "name": "Mediterranean Bliss Salad",
+                  "description": "Lettuce, cucumbers, olives, red & yellow peppers, feta cheese, vinaigrette dressing",
+                  "priceNGN": 24000
+                },
+                {
+                  "id": 78,
+                  "name": "Caesar’s Elegance Chicken",
+                  "description": "Lettuce, croutons, parmesan cheese, grilled chicken, Caesar dressing",
+                  "priceNGN": 19000
+                },
+                {
+                  "id": 79,
+                  "name": "Asian Fusion Crunch",
+                  "description": "Vegetable mix, peppers, glass noodles, chicken, Asian Sauce",
+                  "priceNGN": 20000
+                },
+                {
+                  "id": 241,
+                  "name": "Oriental Salad",
+                  "description": null,
+                  "priceNGN": 20000
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "name": "Gourmet Pizza",
+              "items": [
+                {
+                  "id": 83,
+                  "name": "Four Cheese Fantasy",
+                  "description": "Tomato Sauce, mozzarella, fresh cheese, cheddar & Parmesan cheese",
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 84,
+                  "name": "Spicy Suya Chicken Fire",
+                  "description": null,
+                  "priceNGN": 12500
+                },
+                {
+                  "id": 85,
+                  "name": "Pepperoni Passion",
+                  "description": "Tomato Sauce, mozzarella, beef pepperoni",
+                  "priceNGN": 11000
+                },
+                {
+                  "id": 86,
+                  "name": "The Four Corners Feast",
+                  "description": "Tomato Sauce, mozzarella, ham, bell peppers, onions",
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 87,
+                  "name": "Tropical Hawaiian Paradise",
+                  "description": "Tomato Sauce, mozzarella, ham, pineapple",
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 88,
+                  "name": "Rocket and Feta Delight",
+                  "description": "Tomato Sauce, mozzarella, feta cheese, cherry tomatoes, rocket leaves",
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 89,
+                  "name": "Shrimp Sensation",
+                  "description": "Tomato Sauce, mozzarella, shrimp, pickles, Chiaro Spices",
+                  "priceNGN": 11000
+                },
+                {
+                  "id": 90,
+                  "name": "Margherita Perfection",
+                  "description": "Tomato Sauce, mozzarella, basil",
+                  "priceNGN": 13000
+                },
+                {
+                  "id": 106,
+                  "name": "Golden Frites",
+                  "description": "Classic french fries",
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 110,
+                  "name": "Chiaro's Frites",
+                  "description": "French fries with red cheddar",
+                  "priceNGN": 7000
+                },
+                {
+                  "id": 130,
+                  "name": "Shawarma Royale",
+                  "description": null,
+                  "priceNGN": 11500
+                },
+                {
+                  "id": 131,
+                  "name": "Spicy Suya Beef Fire",
+                  "description": null,
+                  "priceNGN": 13500
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "name": "Take Out",
+              "items": [
+                {
+                  "id": 124,
+                  "name": "Packaging",
+                  "description": null,
+                  "priceNGN": 1000
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "name": "Desert",
+              "items": [
+                {
+                  "id": 94,
+                  "name": "Waffle Delight",
+                  "description": null,
+                  "priceNGN": 16000
+                },
+                {
+                  "id": 107,
+                  "name": "Brownie",
+                  "description": null,
+                  "priceNGN": 7500
+                },
+                {
+                  "id": 108,
+                  "name": "Cake Slice (Vanilla)",
+                  "description": null,
+                  "priceNGN": 4500
+                },
+                {
+                  "id": 109,
+                  "name": "Cake Slice (Chocolate)",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 105,
+                  "name": "Muffin",
+                  "description": null,
+                  "priceNGN": 4000
+                },
+                {
+                  "id": 112,
+                  "name": "CheeseCake",
+                  "description": null,
+                  "priceNGN": 7000
+                },
+                {
+                  "id": 114,
+                  "name": "Chocolate Chip Cookies",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 133,
+                  "name": "Nutella Strawberry Croissant",
+                  "description": "Plain croissant stuffed with Nutella and strawberry, topped with Nutella and icing sugar",
+                  "priceNGN": 12000,
+                  "popular": true
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "name": "Main Dish",
+              "items": [
+                {
+                  "id": 174,
+                  "name": "Pepper Steak",
+                  "description": null,
+                  "priceNGN": 24000
+                },
+                {
+                  "id": 175,
+                  "name": "Chicken Stit Fry",
+                  "description": null,
+                  "priceNGN": 25000
+                },
+                {
+                  "id": 187,
+                  "name": "The Chiaro Platter",
+                  "description": null,
+                  "priceNGN": 28000
+                },
+                {
+                  "id": 202,
+                  "name": "Seafood pasta",
+                  "description": null,
+                  "priceNGN": 35000
+                },
+                {
+                  "id": 203,
+                  "name": "Spaghetti bolognaise",
+                  "description": null,
+                  "priceNGN": 16500
+                },
+                {
+                  "id": 204,
+                  "name": "Alfredo Penne Patsta (Chicken)",
+                  "description": null,
+                  "priceNGN": 19000
+                },
+                {
+                  "id": 205,
+                  "name": "Pesto pasta",
+                  "description": null,
+                  "priceNGN": 19500
+                },
+                {
+                  "id": 237,
+                  "name": "Sautéed Prawns",
+                  "description": null,
+                  "priceNGN": 25000
+                }
+              ]
+            },
+            {
+              "id": 21,
+              "name": "Bites",
+              "items": [
+                {
+                  "id": 138,
+                  "name": "Hotdog",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 139,
+                  "name": "Chicken Strips (5pcs)",
+                  "description": null,
+                  "priceNGN": 12500
+                },
+                {
+                  "id": 140,
+                  "name": "Chicken Wings",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 171,
+                  "name": "Spring Rolls (3 Pieces)",
+                  "description": null,
+                  "priceNGN": 9000
+                },
+                {
+                  "id": 172,
+                  "name": "Dynamite Shrimps",
+                  "description": null,
+                  "priceNGN": 16000
+                },
+                {
+                  "id": 173,
+                  "name": "Butterfly Prawns",
+                  "description": null,
+                  "priceNGN": 18000
+                },
+                {
+                  "id": 206,
+                  "name": "Chiaro corndog",
+                  "description": null,
+                  "priceNGN": 4900
+                }
+              ]
+            },
+            {
+              "id": 23,
+              "name": "Pizza",
+              "items": [
+                {
+                  "id": 179,
+                  "name": "Margherita Pizza",
+                  "description": null,
+                  "priceNGN": 13000
+                },
+                {
+                  "id": 180,
+                  "name": "Pepperoni Pizza",
+                  "description": null,
+                  "priceNGN": 16000
+                },
+                {
+                  "id": 181,
+                  "name": "Vegetarian Pizza",
+                  "description": null,
+                  "priceNGN": 15500
+                },
+                {
+                  "id": 182,
+                  "name": "Four Cheese Pizza",
+                  "description": null,
+                  "priceNGN": 19500
+                },
+                {
+                  "id": 183,
+                  "name": "Chicken BBQ Pizza",
+                  "description": null,
+                  "priceNGN": 17000
+                },
+                {
+                  "id": 184,
+                  "name": "Four Point Pizza",
+                  "description": null,
+                  "priceNGN": 22000
+                },
+                {
+                  "id": 185,
+                  "name": "Salmon Pizza",
+                  "description": null,
+                  "priceNGN": 25000
+                },
+                {
+                  "id": 186,
+                  "name": "Capricciosa Pizza",
+                  "description": null,
+                  "priceNGN": 18000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Signature Sandwiches",
+          "groups": [
+            {
+              "id": 2,
+              "name": "Signature Sandwiches",
+              "items": [
+                {
+                  "id": 80,
+                  "name": "The Classic Turkey & Cheese",
+                  "description": "Turkey Slices, mozzarella, lettuce, tomatoes, cucumber, Cocktail Sauce (Choice of baguette or sourdough)",
+                  "priceNGN": 22000
+                },
+                {
+                  "id": 81,
+                  "name": "Smoky Ham and Cheese Delight",
+                  "description": "Lettuce, smoked ham, mozzarella slices, Cocktail Sauce (Choice of baguette or sourdough)",
+                  "priceNGN": 23000
+                },
+                {
+                  "id": 117,
+                  "name": "Takeout Chicken Pesto Sandwich",
+                  "description": null,
+                  "priceNGN": 8500
+                },
+                {
+                  "id": 82,
+                  "name": "Crab and Avocado Supreme",
+                  "description": "Cucumber, carrot, mayonnaise, avocado, crab (Served in baguette)",
+                  "priceNGN": 13000
+                },
+                {
+                  "id": 119,
+                  "name": "Takeout Turkey & Cheese Sandwich",
+                  "description": null,
+                  "priceNGN": 9000
+                },
+                {
+                  "id": 120,
+                  "name": "MeatPie",
+                  "description": null,
+                  "priceNGN": 7000
+                },
+                {
+                  "id": 239,
+                  "name": "Philly Cheese Steak",
+                  "description": null,
+                  "priceNGN": 21000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Breakfast",
+          "groups": [
+            {
+              "id": 4,
+              "name": "Breakfast",
+              "items": [
+                {
+                  "id": 91,
+                  "name": "Croissant Plain",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 92,
+                  "name": "Croissant Pain au Chocolate",
+                  "description": null,
+                  "priceNGN": 6500
+                },
+                {
+                  "id": 93,
+                  "name": "Croissant Zaatar (Thyme)",
+                  "description": null,
+                  "priceNGN": 6000
+                },
+                {
+                  "id": 95,
+                  "name": "Savory Stuffed Croissant",
+                  "description": "Turkey, cheese, lettuce, tomato, croissant",
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 96,
+                  "name": "Mediterranean Stuffed Croissant",
+                  "description": "Feta cheese, olives, mint leaves, croissant",
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 111,
+                  "name": "Bread Replacement (2pcs)",
+                  "description": null,
+                  "priceNGN": 3500
+                },
+                {
+                  "id": 113,
+                  "name": "Croissant Cheese",
+                  "description": null,
+                  "priceNGN": 9000
+                },
+                {
+                  "id": 115,
+                  "name": "Croissant Almond",
+                  "description": null,
+                  "priceNGN": 6500
+                },
+                {
+                  "id": 125,
+                  "name": "English Breakfast",
+                  "description": "Served with Beans,Sausages,bacon, mushroom, sliced bread and sunny side eggs",
+                  "priceNGN": 22000
+                },
+                {
+                  "id": 127,
+                  "name": "Garden Fresh Omelette",
+                  "description": "Served with slice bread,cucumber and tomato",
+                  "priceNGN": 9000
+                },
+                {
+                  "id": 128,
+                  "name": "Pancake Cloud",
+                  "description": null,
+                  "priceNGN": 13500
+                },
+                {
+                  "id": 158,
+                  "name": "Zaatar Manakish",
+                  "description": null,
+                  "priceNGN": 6000
+                },
+                {
+                  "id": 159,
+                  "name": "Lahm Bi Ajin",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 160,
+                  "name": "Cheese Manakish",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 161,
+                  "name": "Chiaro Manakish",
+                  "description": null,
+                  "priceNGN": 9500
+                },
+                {
+                  "id": 208,
+                  "name": "Cheeselynn",
+                  "description": "Lebanese bread with cheese & parsley",
+                  "priceNGN": 3900
+                },
+                {
+                  "id": 216,
+                  "name": "Chiaro Toshka",
+                  "description": null,
+                  "priceNGN": 19500
+                },
+                {
+                  "id": 234,
+                  "name": "Cheese & Zaatar Manakish",
+                  "description": null,
+                  "priceNGN": 10500
+                },
+                {
+                  "id": 235,
+                  "name": "Japanese Fries",
+                  "description": null,
+                  "priceNGN": 8500
+                },
+                {
+                  "id": 236,
+                  "name": "Singaporean Chili Chicken",
+                  "description": null,
+                  "priceNGN": 19500
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "menus": [
+        {
+          "id": 1,
+          "name": "Vibrants & Fresh Salads",
+          "groups": [
+            {
+              "id": 19,
+              "name": "Wine",
+              "items": [
+                {
+                  "id": 148,
+                  "name": "Tokara Wine Shiraz",
+                  "description": null,
+                  "priceNGN": 55000
+                },
+                {
+                  "id": 149,
+                  "name": "Tokara Wine Cabernet Sauvignon",
+                  "description": null,
+                  "priceNGN": 55000
+                },
+                {
+                  "id": 150,
+                  "name": "Eternal 8 Wine",
+                  "description": null,
+                  "priceNGN": 55000
+                },
+                {
+                  "id": 151,
+                  "name": "Eternal 8 Wine Glass",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 152,
+                  "name": "Bruce Jack Shiraz Wine",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 153,
+                  "name": "Bruce Jack Shiraz Wine Glass",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 154,
+                  "name": "Bruce Jack Cabernet Sauvignon Wine",
+                  "description": null,
+                  "priceNGN": 55000
+                },
+                {
+                  "id": 155,
+                  "name": "Bruce Jack Cabernet Sauvignon Wine Glass",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 156,
+                  "name": "Bruce Jack Sauvignon Blanc Wine",
+                  "description": null,
+                  "priceNGN": 55000
+                },
+                {
+                  "id": 157,
+                  "name": "Bruce Jack Sauvignon Blanc Wine Glass",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 162,
+                  "name": "Bruce Jack Daily Brew Wine Glass",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 163,
+                  "name": "Bruce Jack Daily Brew",
+                  "description": null,
+                  "priceNGN": 55000
+                }
+              ]
+            },
+            {
+              "id": 24,
+              "name": "Cocktails",
+              "items": [
+                {
+                  "id": 189,
+                  "name": "Long Island",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 190,
+                  "name": "Sex On The Beach",
+                  "description": null,
+                  "priceNGN": 14000
+                },
+                {
+                  "id": 191,
+                  "name": "Strawberry Margarita",
+                  "description": null,
+                  "priceNGN": 14000
+                },
+                {
+                  "id": 192,
+                  "name": "Kiwi Rum",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 193,
+                  "name": "Chiaro Martini",
+                  "description": null,
+                  "priceNGN": 14000
+                },
+                {
+                  "id": 194,
+                  "name": "Cosmopolitan",
+                  "description": null,
+                  "priceNGN": 17000
+                },
+                {
+                  "id": 199,
+                  "name": "Tequilla Shot",
+                  "description": null,
+                  "priceNGN": 3500
+                },
+                {
+                  "id": 200,
+                  "name": "Classic Mojito",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 207,
+                  "name": "Screaming orgasm",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 214,
+                  "name": "Jack Daniels Single Shot",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 215,
+                  "name": "Jack Daniels Double Shot",
+                  "description": null,
+                  "priceNGN": 16000
+                }
+              ]
+            },
+            {
+              "id": 25,
+              "name": "Beer",
+              "items": [
+                {
+                  "id": 195,
+                  "name": "Guinness Extra",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 196,
+                  "name": "Trophy Beer",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 197,
+                  "name": "Budweiser",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 198,
+                  "name": "Heineken",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 201,
+                  "name": "Star beer",
+                  "description": null,
+                  "priceNGN": 6000
+                },
+                {
+                  "id": 209,
+                  "name": "Goldberg",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 210,
+                  "name": "Draft Beer 35cl",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 211,
+                  "name": "Draft Beer 50cl",
+                  "description": null,
+                  "priceNGN": 6000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Espresso",
+          "groups": [
+            {
+              "id": 5,
+              "name": "Espresso",
+              "items": [
+                {
+                  "id": 1,
+                  "name": "Espresso",
+                  "description": null,
+                  "priceNGN": 4000
+                },
+                {
+                  "id": 2,
+                  "name": "Double Espresso",
+                  "description": null,
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 3,
+                  "name": "Espresso Con Panna",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 4,
+                  "name": "Americano",
+                  "description": null,
+                  "priceNGN": 6000
+                },
+                {
+                  "id": 5,
+                  "name": "Cappuccino",
+                  "description": null,
+                  "priceNGN": 6000
+                },
+                {
+                  "id": 6,
+                  "name": "Cafe Mocha",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 7,
+                  "name": "Cafe Latte",
+                  "description": "Add Flavor (Optional): Vanilla, Hazelnut, Caramel, Irish Cream, Cinnamon, Chocolate",
+                  "priceNGN": 7000
+                },
+                {
+                  "id": 8,
+                  "name": "Dirty Chai Latte",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 123,
+                  "name": "Lactose Milk",
+                  "description": null,
+                  "priceNGN": 7000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Warm Your Heart",
+          "groups": [
+            {
+              "id": 6,
+              "name": "Warm Up Your Heart",
+              "items": [
+                {
+                  "id": 9,
+                  "name": "Matcha Green Tea Latte",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 10,
+                  "name": "Salted Caramel Latte",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 11,
+                  "name": "Red Velvet Latte",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 12,
+                  "name": "Toffee Coffee Latte",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 13,
+                  "name": "Cinnamon Roll Latte",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 14,
+                  "name": "Pistachio Dream Latte",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 15,
+                  "name": "Hot Chocolate a L’Italien",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 16,
+                  "name": "Marshmallow Hot Chocolate",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 122,
+                  "name": "Chai Latte",
+                  "description": null,
+                  "priceNGN": 6000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Tea Garden",
+          "groups": [
+            {
+              "id": 7,
+              "name": "Tea Garden",
+              "items": [
+                {
+                  "id": 17,
+                  "name": "China Green Jewel",
+                  "description": "Organic high grown yunnan green tea",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 18,
+                  "name": "Apple Moringa Affair",
+                  "description": "Organic fruit infusion moringa apple quince",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 19,
+                  "name": "Nordic Blueberry",
+                  "description": "Organic fruit infusion forest berries",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 20,
+                  "name": "Unforgettable Moroccan Mint",
+                  "description": "Organic herbal infusion mint",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 21,
+                  "name": "Fruit Wave",
+                  "description": "Organic high grown green tea passion fruit papaya",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 22,
+                  "name": "Blue Sky Chamomile",
+                  "description": "Organic herbal infusion chamomile verbena",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 23,
+                  "name": "Tumeric Ginger",
+                  "description": "Organic spice infusion turmeric ginger",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 24,
+                  "name": "Captain Early Grey",
+                  "description": "Organic high grown black tea bergamot",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 25,
+                  "name": "Darling Peach",
+                  "description": "Organic high grown white tea apricot peach",
+                  "priceNGN": 5500
+                },
+                {
+                  "id": 26,
+                  "name": "Ceylon Secret Garden",
+                  "description": "Organic high grown uva black tea",
+                  "priceNGN": 5500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Cool Me Down",
+          "groups": [
+            {
+              "id": 8,
+              "name": "Cool Me Down",
+              "items": [
+                {
+                  "id": 27,
+                  "name": "Matcha Green Tea Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 28,
+                  "name": "Coffee Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 29,
+                  "name": "Salted Caramel Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 30,
+                  "name": "Mocha Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 31,
+                  "name": "Toffee Coffee Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 32,
+                  "name": "Cookies and Cream Oreo Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 33,
+                  "name": "Chocolate Frappe",
+                  "description": null,
+                  "priceNGN": 11500
+                },
+                {
+                  "id": 34,
+                  "name": "Red Velvet Frappe",
+                  "description": null,
+                  "priceNGN": 10000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "name": "Smooth Out Your Day",
+          "groups": [
+            {
+              "id": 9,
+              "name": "Smooth Out Your Day",
+              "items": [
+                {
+                  "id": 35,
+                  "name": "Mango Smoothie",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 36,
+                  "name": "Peach Smoothie",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 37,
+                  "name": "Strawberry Smoothie",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 38,
+                  "name": "Watermelon Strawberry Smoothie",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 39,
+                  "name": "Green Melon Passion Smoothie",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 40,
+                  "name": "Bubbly Smoothie",
+                  "description": null,
+                  "priceNGN": 11000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "Shakelicious",
+          "groups": [
+            {
+              "id": 10,
+              "name": "Shakelicious",
+              "items": [
+                {
+                  "id": 41,
+                  "name": "Chocolate Milkshake",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 42,
+                  "name": "Strawberry Milkshake",
+                  "description": null,
+                  "priceNGN": 10500
+                },
+                {
+                  "id": 43,
+                  "name": "Caramel Milkshake",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 44,
+                  "name": "Pistachio Milkshake",
+                  "description": null,
+                  "priceNGN": 12000
+                },
+                {
+                  "id": 45,
+                  "name": "Oreo Milkshake",
+                  "description": null,
+                  "priceNGN": 11500
+                },
+                {
+                  "id": 135,
+                  "name": "Vanilla Milkshakeke",
+                  "description": null,
+                  "priceNGN": 10500
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "On The Rocks",
+          "groups": [
+            {
+              "id": 11,
+              "name": "On The Rocks",
+              "items": [
+                {
+                  "id": 46,
+                  "name": "Iced Peach Tea",
+                  "description": null,
+                  "priceNGN": 9500
+                },
+                {
+                  "id": 47,
+                  "name": "Iced Green Tea",
+                  "description": null,
+                  "priceNGN": 9500
+                },
+                {
+                  "id": 48,
+                  "name": "Iced Black Lemon Tea",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 49,
+                  "name": "Iced Caramelloccino",
+                  "description": null,
+                  "priceNGN": 8500
+                },
+                {
+                  "id": 50,
+                  "name": "Iced Dark Mocha",
+                  "description": null,
+                  "priceNGN": 9000
+                },
+                {
+                  "id": 51,
+                  "name": "Iced White Mocha",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 52,
+                  "name": "Iced Latte",
+                  "description": "Add Flavor (Optional): Vanilla, Hazelnut, Caramel, Irish Cream, Cinnamon, Chocolate",
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 134,
+                  "name": "Iced Matcha",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 147,
+                  "name": "Orange Juice",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 164,
+                  "name": "Strawberry Matcha",
+                  "description": null,
+                  "priceNGN": 9500
+                },
+                {
+                  "id": 165,
+                  "name": "Mango Matcha",
+                  "description": null,
+                  "priceNGN": 9500
+                },
+                {
+                  "id": 166,
+                  "name": "Forest Fruit Matcha",
+                  "description": null,
+                  "priceNGN": 9500
+                },
+                {
+                  "id": 212,
+                  "name": "Fresh Orange Juice",
+                  "description": null,
+                  "priceNGN": 10000
+                },
+                {
+                  "id": 213,
+                  "name": "Fresh Pineapple Juice",
+                  "description": null,
+                  "priceNGN": 10000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Italian Soda",
+          "groups": [
+            {
+              "id": 12,
+              "name": "Italian Soda",
+              "items": [
+                {
+                  "id": 53,
+                  "name": "Blue Coco Soda",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 54,
+                  "name": "Strawbomb Soda",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 55,
+                  "name": "Kiwi Lime Soda",
+                  "description": null,
+                  "priceNGN": 8000
+                },
+                {
+                  "id": 56,
+                  "name": "Lychee Peachy Soda",
+                  "description": null,
+                  "priceNGN": 8500
+                },
+                {
+                  "id": 57,
+                  "name": "Watermelon Mango Soda",
+                  "description": null,
+                  "priceNGN": 9000
+                },
+                {
+                  "id": 58,
+                  "name": "Pineapple Lemonade",
+                  "description": null,
+                  "priceNGN": 8500
+                },
+                {
+                  "id": 59,
+                  "name": "Fizzy Lemonade",
+                  "description": null,
+                  "priceNGN": 7500
+                },
+                {
+                  "id": 169,
+                  "name": "Independence Pitcher",
+                  "description": null,
+                  "priceNGN": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Cool Classics",
+          "groups": [
+            {
+              "id": 13,
+              "name": "Cool Classics",
+              "items": [
+                {
+                  "id": 60,
+                  "name": "Water Big",
+                  "description": null,
+                  "priceNGN": 2000
+                },
+                {
+                  "id": 61,
+                  "name": "Water Small",
+                  "description": null,
+                  "priceNGN": 1500
+                },
+                {
+                  "id": 62,
+                  "name": "Coca Cola",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 63,
+                  "name": "Coca Cola Zero",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 64,
+                  "name": "Fanta",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 65,
+                  "name": "Sprite",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 66,
+                  "name": "Schweppes Virgin Mojito",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 67,
+                  "name": "Schweppes Soda Water",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 68,
+                  "name": "Schweppes Chapman",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 69,
+                  "name": "Schweppes Bitter Lemon",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 71,
+                  "name": "Redbull",
+                  "description": null,
+                  "priceNGN": 4500
+                },
+                {
+                  "id": 72,
+                  "name": "Powerhorse",
+                  "description": null,
+                  "priceNGN": 4500
+                },
+                {
+                  "id": 170,
+                  "name": "Schweppes Pineapple",
+                  "description": null,
+                  "priceNGN": 1600
+                },
+                {
+                  "id": 188,
+                  "name": "Bonjus",
+                  "description": null,
+                  "priceNGN": 1600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Sparkling Sensation",
+          "groups": [
+            {
+              "id": 14,
+              "name": "Sparkling Sensations",
+              "items": [
+                {
+                  "id": 73,
+                  "name": "Perrier Sparkling Water",
+                  "description": null,
+                  "priceNGN": 5000
+                },
+                {
+                  "id": 74,
+                  "name": "Maison Perrier Forever Lemon",
+                  "description": null,
+                  "priceNGN": 4500
+                },
+                {
+                  "id": 75,
+                  "name": "Maison Perrier Forever Lime",
+                  "description": null,
+                  "priceNGN": 4500
+                },
+                {
+                  "id": 76,
+                  "name": "Maison Perrier Forever Grapefruit",
+                  "description": null,
+                  "priceNGN": 4500
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tobacco",
+      "menus": [
+        {
+          "id": 1,
+          "name": "Vibrants & Fresh Salads",
+          "groups": [
+            {
+              "id": 16,
+              "name": "shisha",
+              "items": [
+                {
+                  "id": 99,
+                  "name": "Mint And Lemon Shisha",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 100,
+                  "name": "Mint",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 101,
+                  "name": "Double Apple",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 102,
+                  "name": "Strawberry",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 103,
+                  "name": "Melon",
+                  "description": null,
+                  "priceNGN": 15000
+                },
+                {
+                  "id": 137,
+                  "name": "Birthday Candle",
+                  "description": null,
+                  "priceNGN": 3000
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
