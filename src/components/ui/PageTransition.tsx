@@ -5,7 +5,9 @@ import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { AnimatePresence, m } from "motion/react";
 
-// A curtain closes over the page, the route changes, then it lifts again.
+const ease = [0.76, 0, 0.24, 1] as const;
+
+// The same drapes as the loader: they close over the page, the route changes, then they part again.
 export function PageTransition() {
   const router = useRouter();
   const pathname = usePathname();
@@ -14,7 +16,7 @@ export function PageTransition() {
 
   // Once the loader has played, later pages shouldn't wait for it.
   useEffect(() => {
-    const id = window.setTimeout(() => document.documentElement.classList.add("no-loader"), 2200);
+    const id = window.setTimeout(() => document.documentElement.classList.add("no-loader"), 2800);
     return () => window.clearTimeout(id);
   }, []);
 
@@ -27,14 +29,14 @@ export function PageTransition() {
       if (!a || a.target || a.hasAttribute("download") || a.closest('[role="dialog"]')) return;
       const url = new URL(a.href, location.href);
       if (url.origin !== location.origin || url.pathname === location.pathname) return;
-      // Capture phase: this runs before next/link, so the curtain closes before the route changes.
+      // Capture phase: this runs before next/link, so the drapes close before the route changes.
       e.preventDefault();
       e.stopPropagation();
       pending.current = url.pathname + url.hash;
       setCovering(true);
       window.setTimeout(() => {
         if (pending.current) router.push(pending.current);
-      }, 560);
+      }, 720);
     };
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
@@ -43,7 +45,7 @@ export function PageTransition() {
   useEffect(() => {
     if (!pending.current) return;
     pending.current = null;
-    const id = window.setTimeout(() => setCovering(false), 140);
+    const id = window.setTimeout(() => setCovering(false), 160);
     return () => window.clearTimeout(id);
   }, [pathname]);
 
@@ -51,9 +53,10 @@ export function PageTransition() {
     <AnimatePresence>
       {covering && (
         <div className="pointer-events-none fixed inset-0 z-[95]" aria-hidden>
-          <m.div className="absolute inset-0 bg-taupe" initial={{ y: "101%" }} animate={{ y: 0 }} exit={{ y: "-101%" }} transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }} />
-          <m.div className="absolute inset-0 flex items-center justify-center bg-ink" initial={{ y: "101%" }} animate={{ y: 0 }} exit={{ y: "-101%" }} transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}>
-            <Image src="/images/site/logo-full-oat.png" alt="" width={96} height={104} />
+          <m.div className="drape drape-left" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} exit={{ scaleX: 0 }} transition={{ duration: 0.7, ease }} />
+          <m.div className="drape drape-right" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} exit={{ scaleX: 0 }} transition={{ duration: 0.7, ease }} />
+          <m.div className="absolute inset-0 flex items-center justify-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3, delay: 0.42 }}>
+            <Image src="/images/site/logo-full-oat.png" alt="" width={96} height={111} />
           </m.div>
         </div>
       )}

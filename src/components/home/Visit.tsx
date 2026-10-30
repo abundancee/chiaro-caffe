@@ -17,8 +17,8 @@ export function Visit() {
     <section ref={root} id="visit" aria-labelledby="visit-title" className="on-dark relative overflow-hidden bg-wine px-4 py-20 text-cream md:px-8 md:py-32">
       <div className="relative mx-auto grid max-w-[76rem] gap-10 md:grid-cols-2 md:items-center md:gap-16">
         <div>
-          <h2 id="visit-title" className="display text-[5rem] md:text-[8rem]">
-            Find <span className="accent text-[0.85em] text-clay">us</span>
+          <h2 id="visit-title" className="display text-[4.25rem] md:text-[7.5rem]">
+            Find <span className="accent text-brass">us</span>
           </h2>
           <address className="mt-5 not-italic">
             <p className="serif text-[1.625rem] leading-snug">{fullAddress}</p>
@@ -31,7 +31,7 @@ export function Visit() {
             <span className="sr-only">(opens Google Maps)</span>
           </a>
           <table className="mt-10 w-full max-w-md text-left">
-            <caption className="eyebrow mb-3 text-left text-clay">Opening hours</caption>
+            <caption className="eyebrow mb-3 text-left text-brass">Opening hours</caption>
             <tbody>
               {dayLabels.map(({ key, label }) => {
                 const h = site.hours?.[key];

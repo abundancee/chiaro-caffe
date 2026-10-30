@@ -27,8 +27,8 @@ export function Reviews() {
     <section ref={root} id="reviews" aria-labelledby="reviews-title" className="bg-cream px-4 py-20 md:px-8 md:py-32">
       <div className="mx-auto max-w-[76rem]">
         <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-6">
-          <h2 id="reviews-title" className="display text-[4.5rem] md:text-[8rem]">
-            Kind <span className="accent text-[0.85em]">words</span>
+          <h2 id="reviews-title" className="display text-[3.75rem] md:text-[7rem]">
+            Kind <span className="accent ">words</span>
           </h2>
           {average !== null && (
             <p className="flex items-center gap-3">

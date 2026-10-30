@@ -22,11 +22,11 @@ export function Gallery() {
     el.querySelectorAll<HTMLElement>("[data-tile]").forEach((t, i) => {
       tl.from(t, { xPercent: tiles[i].x, yPercent: tiles[i].y, scale: 0.6, ease: "power2.out" }, 0);
     });
-    gsap.from(el.querySelector("[data-big]"), { fontStretch: "50%", ease: "none", scrollTrigger: { trigger: el, start: "top 90%", end: "top 25%", scrub: true } });
+    gsap.from(el.querySelector("[data-big]"), { y: 60, opacity: 0, ease: "none", scrollTrigger: { trigger: el, start: "top 90%", end: "top 45%", scrub: true } });
   });
   return (
     <section ref={root} aria-labelledby="gallery-title" className="overflow-hidden bg-sand px-4 py-20 md:px-8 md:py-32">
-      <h2 id="gallery-title" data-big className="display text-center text-[25vw] md:text-[14vw]">
+      <h2 id="gallery-title" data-big className="display text-center text-[17vw] md:text-[11vw]">
         The mood
       </h2>
       <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-2 md:mt-14 md:gap-4">

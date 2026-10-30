@@ -34,7 +34,7 @@ Open [`src/data/site.ts`](src/data/site.ts). Dashed `[PLACEHOLDER]` labels disap
 - `socials`: social links. Icons appear in the footer.
 - `reviews`: real guest reviews. The rating summary is calculated from them.
 
-The brand story placeholder is in `src/components/home/Statement.tsx`, the space photo slot is in `src/components/home/Gallery.tsx`, and the privacy policy draft is in `src/app/privacy/page.tsx`.
+The brand story placeholder is in `src/components/home/Statement.tsx` (the About copy is there too), the space photo slot is in `src/components/home/Gallery.tsx`, and the privacy policy draft is in `src/app/privacy/page.tsx`.
 
 ## Swap a photo
 
@@ -42,7 +42,11 @@ The brand story placeholder is in `src/components/home/Statement.tsx`, the space
 2. Point that item's `image` at the new file in `src/data/menu.ts`.
 3. Run `npm run images:process` to generate its blur placeholder. Photos without one still work; they just load without the blur.
 
-Home page photos are in `public/images/site/`. Current photos are Pexels stock images, and `content/photo-sources.json` lists the Pexels photo used for each item ID. `npm run images:process` needs internet access if a stock photo must be downloaded again.
+Home page photos, including the hero (`hero.webp`), are in `public/images/site/`, and `scripts/build-scene-photos.mjs` records the Pexels source of the hero and scene photos. Current photos are Pexels stock images, and `content/photo-sources.json` lists the Pexels photo used for each item ID. `npm run images:process` needs internet access if a stock photo must be downloaded again.
+
+## My picks PDF
+
+"Save as PDF" on the staff view and in the My picks drawer builds the list in the browser with jsPDF and opens it in a new tab. The layout is in `src/lib/export-picks.ts`.
 
 ## Deploy to Vercel
 

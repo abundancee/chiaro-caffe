@@ -19,7 +19,7 @@ export function BagButton({ className = "" }: { className?: string }) {
         <ToteIcon size={24} weight="light" aria-hidden />
       </m.span>
       {ready && count > 0 && (
-        <span aria-hidden className="absolute right-0 top-0 flex h-[1.125rem] min-w-[1.125rem] items-center justify-center rounded-full bg-terracotta px-1 text-[0.6875rem] font-medium tabular-nums text-ink">
+        <span aria-hidden className="absolute right-0 top-0 flex h-[1.125rem] min-w-[1.125rem] items-center justify-center rounded-full bg-brass px-1 text-[0.6875rem] tabular-nums text-ink">
           {count}
         </span>
       )}

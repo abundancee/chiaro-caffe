@@ -24,12 +24,12 @@ export function ItemRow({ item, priority = false }: { item: MenuItem; priority?:
           <Photo src={item.image} alt="" fill priority={priority} sizes="112px" className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105" />
         </span>
         <span className="flex min-w-0 flex-1 flex-col pr-12">
-          <span className="text-[1.0625rem] font-medium leading-snug underline-offset-4 group-hover:underline">
+          <span className="serif text-[1.3125rem] leading-[1.18] underline-offset-4 group-hover:underline md:text-[1.4375rem]">
             {item.name}
-            {item.popular && <span className="accent ml-2 text-[0.9375rem] font-normal text-roast">Popular</span>}
+            {item.popular && <span className="accent ml-2 text-[0.9375rem] text-brass-ink">Popular</span>}
           </span>
           {item.description && <span className="mt-1 line-clamp-2 text-[0.8125rem] leading-snug text-roast">{item.description}</span>}
-          <span className="mt-auto pt-1.5 text-[0.9375rem] tabular-nums">{formatPrice(item.price)}</span>
+          <span className="mt-auto pt-1.5 text-[0.875rem] tracking-[0.04em] tabular-nums">{formatPrice(item.price)}</span>
         </span>
       </button>
       <m.button
@@ -41,7 +41,7 @@ export function ItemRow({ item, priority = false }: { item: MenuItem; priority?:
           flyToBag(photo.current);
           add(item, 1, {});
         }}
-        className={`absolute bottom-3 right-0 flex size-11 items-center justify-center rounded-full border transition-colors duration-300 ${inList ? "border-ink bg-ink text-cream" : "border-ink/50 hover:bg-ink hover:text-cream"}`}
+        className={`absolute bottom-3 right-0 flex size-11 items-center justify-center rounded-full border transition-colors duration-500 ${inList ? "border-brass bg-brass text-[#17120f]" : "border-line hover:border-brass hover:bg-brass hover:text-[#17120f]"}`}
       >
         {inList ? <span className="flex items-center gap-px text-[0.875rem] tabular-nums"><CheckIcon size={12} aria-hidden />{inList}</span> : <PlusIcon size={18} aria-hidden />}
       </m.button>

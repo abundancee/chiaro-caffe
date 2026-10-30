@@ -3,73 +3,98 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
-import { Photo } from "@/components/ui/Photo";
+import { getImageProps } from "next/image";
+import blurMap from "@/data/image-blur.json";
 import { useScene } from "@/lib/use-scene";
 import { site } from "@/data/site";
 
-const letters = "CHIARO".split("");
-
-const photos = [
-  { src: "/images/menu/croissant-plain.webp", alt: "Two golden croissants", pos: "left-[4%] top-[15%] w-[24vw] md:left-[6%] md:top-[17%] md:w-[10vw]", depth: 1.2 },
-  { src: "/images/menu/cappuccino.webp", alt: "A cappuccino", pos: "right-[4%] top-[20%] w-[20vw] md:right-[8%] md:top-[15%] md:w-[8vw]", depth: 0.8 },
-  { src: "/images/menu/chiaro-martini.webp", alt: "A martini", pos: "left-[34%] top-[33%] w-[17vw] md:left-[30%] md:top-[11%] md:w-[7vw]", depth: 1.4 },
+const lines = [
+  <>From first <em className="accent">croissant</em></>,
+  <>to last <em className="accent">cocktail.</em></>,
 ];
 
-// The sun sets behind the name, the letters part, and the page falls into the day.
+const alt = "A glass of espresso caught in low golden light on a dark table";
+const { props: wideProps } = getImageProps({ src: "/images/site/hero.webp", alt, width: 2400, height: 1600, sizes: "100vw" });
+const { props: tallProps } = getImageProps({ src: "/images/site/hero-mobile.webp", alt, width: 1000, height: 1600, sizes: "100vw" });
+const blur = (blurMap as Record<string, string>)["/images/site/hero-mobile.webp"];
+
+// Full-bleed at first. On scroll the photo draws back into a framed picture while the name rises beneath it.
 export function Hero() {
   const root = useRef<HTMLElement>(null);
 
   useScene(root, ({ gsap }, el) => {
     const q = gsap.utils.selector(el);
-    const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top top", end: "+=85%", scrub: 0.7, pin: true, anticipatePin: 1 } });
-    tl.to(q("[data-sun]"), { yPercent: 60, scale: 1.25, ease: "none" }, 0).to(q("[data-copy]"), { y: -40, autoAlpha: 0, ease: "none", duration: 0.4 }, 0);
-    q<HTMLElement>("[data-letter]").forEach((l, i) => {
-      const fromCentre = i - 2.5;
-      tl.to(l, { xPercent: fromCentre * 26, yPercent: -Math.abs(fromCentre) * 8, fontStretch: "92%", ease: "none" }, 0);
-    });
-    q<HTMLElement>("[data-photo]").forEach((p) => {
-      tl.to(p, { y: -360 * Number(p.dataset.depth), ease: "none" }, 0);
-    });
+    const wide = window.matchMedia("(min-width: 768px)").matches;
+    const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top top", end: "+=110%", scrub: 0.9, pin: true, anticipatePin: 1 } });
+    tl.fromTo(
+      q("[data-frame]"),
+      { clipPath: "inset(0% 0% 0% 0%)" },
+      { clipPath: wide ? "inset(13% 33% 25% 33%)" : "inset(13% 17% 33% 17%)", ease: "power2.inOut", duration: 1 },
+      0,
+    )
+      .fromTo(q("[data-image]"), { scale: 1.14, xPercent: 0 }, { scale: 1, xPercent: wide ? -12 : 0, ease: "power2.inOut", duration: 1 }, 0)
+      .to(q("[data-scrim]"), { opacity: 0, ease: "none", duration: 0.5 }, 0.1)
+      .to(q("[data-copy]"), { y: -50, autoAlpha: 0, ease: "power1.in", duration: 0.32 }, 0)
+      .fromTo(q("[data-word]"), { yPercent: 105 }, { yPercent: 0, ease: "power3.out", duration: 0.6, stagger: 0.035 }, 0.42)
+      .fromTo(q("[data-caption]"), { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.3 }, 0.72);
   });
 
   return (
-    <section ref={root} aria-label="Welcome" className="on-dark relative flex h-[100svh] min-h-[36rem] flex-col justify-end overflow-hidden bg-ink pb-20 text-cream md:pb-10">
-      <div data-sun aria-hidden className="absolute left-[9vw] top-[16%] size-[82vw] md:left-[31vw] md:top-[9%] md:size-[38vw]">
-        <div className="sun-up size-full rounded-full bg-terracotta" />
-      </div>
-
-      {photos.map((p, i) => (
-        <div key={p.src} data-photo data-depth={p.depth} className={`absolute z-20 ${p.pos}`}>
-          <div className="pop sticker aspect-[4/5]" style={{ ["--d" as string]: `${0.3 + i * 0.1}s` }}>
-            <Photo src={p.src} alt={p.alt} fill sizes="(min-width: 768px) 12vw, 24vw" className="object-cover" />
-          </div>
-        </div>
-      ))}
-
-      <h1 aria-label={`${site.name}. ${site.tagline}`} className="relative z-10 flex w-full justify-center overflow-hidden">
-        {letters.map((l, i) => (
-          <span key={i} aria-hidden data-letter className="display inline-block text-[37vw] leading-[0.98] md:text-[29vw]">
-            <span className="rise" style={{ ["--d" as string]: `${i * 0.05}s` }}>
+    <section ref={root} aria-label="Welcome" className="on-dark relative h-[100svh] min-h-[36rem] overflow-hidden bg-ink text-cream">
+      {/* Revealed behind the shrinking frame */}
+      <div className="absolute inset-x-0 bottom-[9%] flex flex-col items-center md:bottom-[3%]">
+        <p aria-hidden data-caption className="eyebrow invisible mb-2 text-brass md:mb-1">
+          {site.address.area}, {site.address.city}
+        </p>
+        <p aria-hidden className="flex overflow-hidden">
+          {"Chiaro".split("").map((l, i) => (
+            <span key={i} data-word className="display inline-block text-[27vw] leading-[1.08] md:text-[17vw]">
               {l}
             </span>
-          </span>
-        ))}
-      </h1>
-
-      <div data-copy className="relative z-30 mx-auto mt-5 flex w-full max-w-[110rem] flex-col gap-5 px-4 md:flex-row md:items-end md:justify-between md:px-8">
-        <p className="serif text-[2.125rem] leading-[1.08] md:text-[clamp(2.25rem,3.4vw,3.5rem)]">
-          From first <span className="italic">croissant</span>
-          <br />
-          to last <span className="italic">cocktail.</span>
+          ))}
         </p>
-        <div className="flex flex-wrap items-center gap-6">
+      </div>
+
+      <div data-frame className="absolute inset-0 overflow-hidden">
+        <div data-image className="absolute inset-0">
+          <div className="drift absolute inset-0">
+            <picture>
+              <source media="(min-width: 768px)" srcSet={wideProps.srcSet} sizes="100vw" />
+              <source srcSet={tallProps.srcSet} sizes="100vw" />
+              <img src={tallProps.src} alt={alt} fetchPriority="high" decoding="async" className="absolute inset-0 size-full object-cover" style={{ backgroundImage: `url(${blur})`, backgroundSize: "cover" }} />
+            </picture>
+          </div>
+        </div>
+        <div data-scrim aria-hidden className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/15 to-ink/45" />
+      </div>
+
+      <div data-copy className="absolute inset-x-0 bottom-0 mx-auto flex max-w-[110rem] flex-col gap-7 px-4 pb-22 md:flex-row md:items-end md:justify-between md:px-8 md:pb-12">
+        <div>
+          <p className="pop eyebrow mb-5 text-cream/85" style={{ ["--d" as string]: "0.1s" }}>
+            {site.address.area}, {site.address.city}
+          </p>
+          <h1 className="display text-[3.25rem] leading-[1.04] md:text-[clamp(4rem,7.4vw,8.5rem)]">
+            {lines.map((line, i) => (
+              <span key={i} className="block overflow-hidden pb-[0.08em]">
+                <span className="rise" style={{ ["--d" as string]: `${0.15 + i * 0.12}s` }}>
+                  {line}
+                </span>
+              </span>
+            ))}
+          </h1>
+        </div>
+        <div className="pop flex shrink-0 flex-wrap items-center gap-7 md:pb-3" style={{ ["--d" as string]: "0.55s" }}>
           <Link href="/menu" className="btn bg-cream text-ink">
-            View menu <ArrowRightIcon size={18} aria-hidden />
+            View menu <ArrowRightIcon size={16} aria-hidden />
           </Link>
-          <Link href="/#visit" className="border-b border-cream/60 pb-0.5 transition-colors hover:border-cream">
+          <Link href="/#visit" className="border-b border-cream/50 pb-1 text-[0.8125rem] uppercase tracking-[0.18em] transition-colors hover:border-cream">
             Find us
           </Link>
         </div>
+      </div>
+
+      <div aria-hidden className="absolute bottom-0 right-8 hidden h-14 w-px overflow-hidden bg-cream/20 md:block">
+        <span className="scroll-cue block size-full bg-cream" />
       </div>
     </section>
   );

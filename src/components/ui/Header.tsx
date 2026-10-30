@@ -49,7 +49,7 @@ export function Header() {
           </Link>
           <nav aria-label="Main" className="hidden items-center gap-9 md:flex">
             {navLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="group relative py-1 text-[0.9375rem]">
+              <Link key={l.href} href={l.href} className="group relative py-1 text-[0.8125rem] uppercase tracking-[0.18em]">
                 {l.label}
                 <span className="absolute inset-x-0 -bottom-px h-px origin-right scale-x-0 bg-current transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
               </Link>
@@ -97,7 +97,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
         {[{ href: "/", label: "Home" }, ...navLinks].map((l, i) => (
           <div key={l.href} className="overflow-hidden border-t border-line-dark last:border-b">
             <m.div initial={{ y: "105%" }} animate={{ y: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.06 }}>
-              <Link href={l.href} onClick={onClose} className="display flex items-baseline justify-between py-3 text-[3.75rem]">
+              <Link href={l.href} onClick={onClose} className="display flex items-baseline justify-between py-3 text-[3.25rem]">
                 {l.label}
                 <span className="accent text-lg text-cream/70">0{i + 1}</span>
               </Link>

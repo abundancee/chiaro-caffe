@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Anybody, Bodoni_Moda, DM_Sans } from "next/font/google";
+import { Bodoni_Moda, Jost } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/ui/Providers";
 import { Loader, loaderScript } from "@/components/ui/Loader";
@@ -8,9 +8,8 @@ import { Footer } from "@/components/ui/Footer";
 import { dayLabels, site } from "@/data/site";
 import { siteUrl } from "@/lib/url";
 
-const anybody = Anybody({ subsets: ["latin"], variable: "--font-anybody", axes: ["wdth"], weight: "variable", display: "swap" });
 const bodoni = Bodoni_Moda({ subsets: ["latin"], variable: "--font-bodoni", axes: ["opsz"], weight: "variable", style: ["normal", "italic"], display: "swap" });
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", weight: "variable", display: "swap" });
+const jost = Jost({ subsets: ["latin"], variable: "--font-jost", weight: "variable", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -56,7 +55,7 @@ const structuredData = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anybody.variable} ${bodoni.variable} ${dmSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${bodoni.variable} ${jost.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: loaderScript }} />
       </head>

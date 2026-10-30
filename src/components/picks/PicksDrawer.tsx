@@ -9,6 +9,7 @@ import { usePicks } from "@/lib/picks";
 import { useModal } from "@/lib/use-modal";
 import { Photo } from "@/components/ui/Photo";
 import { QuantityStepper } from "@/components/ui/QuantityStepper";
+import { PdfButton } from "./PdfButton";
 
 export function PicksDrawer() {
   const { drawerOpen, setDrawerOpen } = usePicks();
@@ -37,8 +38,8 @@ function Drawer({ onClose }: { onClose: () => void }) {
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex items-center justify-between border-b border-line px-5 py-3">
-          <h2 id="picks-title" className="display text-[2.75rem]">
-            My <span className="accent text-[0.85em]">picks</span>
+          <h2 id="picks-title" className="display text-[2.25rem]">
+            My <span className="accent">picks</span>
           </h2>
           <button type="button" data-autofocus onClick={onClose} aria-label="Close my picks" className="-mr-2 flex size-11 items-center justify-center">
             <XIcon size={24} weight="light" aria-hidden />
@@ -106,9 +107,12 @@ function Drawer({ onClose }: { onClose: () => void }) {
               >
                 Show to staff
               </button>
-              <button type="button" onClick={clear} className="mt-1 min-h-11 w-full text-[0.9375rem] underline-offset-4 hover:underline">
-                Clear list
-              </button>
+              <div className="mt-1 grid grid-cols-2">
+                <PdfButton className="flex min-h-11 items-center justify-center gap-2 text-[0.9375rem] underline-offset-4 hover:underline disabled:opacity-60" />
+                <button type="button" onClick={clear} className="min-h-11 text-[0.9375rem] underline-offset-4 hover:underline">
+                  Clear list
+                </button>
+              </div>
             </div>
           </>
         )}

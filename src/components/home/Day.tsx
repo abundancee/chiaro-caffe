@@ -16,8 +16,8 @@ interface Panel {
 
 const panels: Panel[] = [
   { word: "Rise", line: "Something warm, something flaky.", bg: "bg-sand", fg: "text-ink", slugs: ["croissant-almond", "english-breakfast", "pancake-cloud", "cappuccino"] },
-  { word: "Graze", line: "Salads, pizza and a long lunch.", bg: "bg-sage", fg: "text-ink", slugs: ["mediterranean-bliss-salad", "margherita-perfection", "seafood-pasta", "mango-smoothie"] },
-  { word: "Clink", line: "The glasses come out.", bg: "bg-terracotta", fg: "text-ink", slugs: ["strawberry-margarita", "dynamite-shrimps", "chiaro-martini", "tokara-wine-shiraz"] },
+  { word: "Graze", line: "Salads, pizza and a long lunch.", bg: "bg-olive", fg: "text-cream", dark: true, slugs: ["mediterranean-bliss-salad", "margherita-perfection", "seafood-pasta", "mango-smoothie"] },
+  { word: "Clink", line: "The glasses come out.", bg: "bg-cognac", fg: "text-cream", dark: true, slugs: ["strawberry-margarita", "dynamite-shrimps", "chiaro-martini", "tokara-wine-shiraz"] },
   { word: "Linger", line: "One more, and maybe dessert.", bg: "bg-wine", fg: "text-cream", dark: true, slugs: ["double-apple", "classic-mojito", "nutella-strawberry-croissant", "cheesecake"] },
 ];
 
@@ -38,7 +38,7 @@ export function Day() {
     gsap.fromTo(q("[data-sun-marker]"), { left: "0%" }, { left: "100%", ease: "none", scrollTrigger: { trigger: el, start: "top top", end: () => `+=${distance()}`, scrub: 0.7 } });
     q<HTMLElement>("[data-panel]").forEach((p) => {
       const pq = gsap.utils.selector(p);
-      gsap.from(pq("[data-word]"), { fontStretch: "50%", xPercent: 14, ease: "none", scrollTrigger: { trigger: p, containerAnimation: slide, start: "left 95%", end: "left 15%", scrub: true } });
+      gsap.from(pq("[data-word]"), { xPercent: 22, ease: "none", scrollTrigger: { trigger: p, containerAnimation: slide, start: "left 95%", end: "left 15%", scrub: true } });
       pq<HTMLElement>("[data-tile]").forEach((t, i) => {
         gsap.from(t, { y: (i % 2 ? -1 : 1) * 70, opacity: 0.3, ease: "none", scrollTrigger: { trigger: p, containerAnimation: slide, start: "left 95%", end: "left 30%", scrub: true } });
       });
@@ -50,16 +50,16 @@ export function Day() {
       <h2 id="day-title" className="sr-only">
         A day at Chiaro
       </h2>
-      <div aria-hidden className="pointer-events-none absolute inset-x-4 top-[5rem] z-20 h-px bg-ink/25 md:inset-x-16 md:top-24">
-        <span data-sun-marker className="absolute -top-[5px] left-0 size-[11px] -translate-x-1/2 rounded-full bg-ink" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-4 top-[5rem] z-20 h-px bg-brass/50 md:inset-x-16 md:top-24">
+        <span data-sun-marker className="absolute -top-[3px] left-0 size-[7px] -translate-x-1/2 rotate-45 bg-brass" />
       </div>
       <div data-track className="flex w-max">
         {panels.map((p, n) => (
           <article key={p.word} data-panel className={`${p.bg} ${p.fg} ${p.dark ? "on-dark" : ""} flex h-[100svh] min-h-[38rem] w-screen shrink-0 snap-start flex-col justify-center px-4 pb-20 pt-24 md:px-16 md:pb-8`}>
             <div className="flex items-end justify-between gap-4">
               <div>
-                <p className="eyebrow">0{n + 1} / 04</p>
-                <p data-word className="display mt-2 origin-left text-[34vw] leading-[.9] md:text-[17vw]">
+                <p className="eyebrow opacity-80">0{n + 1} / 04</p>
+                <p data-word className="display mt-2 origin-left text-[27vw] leading-[1] md:text-[15vw]">
                   {p.word}
                 </p>
               </div>

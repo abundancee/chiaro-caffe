@@ -28,7 +28,7 @@ export function SectionSheet({ categories, onPick, onClose }: { categories: Menu
         className="relative max-h-[88dvh] w-full overflow-y-auto rounded-t-sheet bg-cream p-4 pb-8 outline-none md:max-w-3xl md:rounded-sheet md:p-8"
       >
         <div className="flex items-center justify-between">
-          <h2 className="display text-[3rem]">Jump to</h2>
+          <h2 className="display text-[2.5rem]">Jump to</h2>
           <button type="button" data-autofocus onClick={onClose} aria-label="Close sections" className="flex size-11 items-center justify-center">
             <XIcon size={24} weight="light" aria-hidden />
           </button>

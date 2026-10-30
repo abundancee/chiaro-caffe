@@ -19,7 +19,7 @@ export function Footer() {
           </p>
         </div>
         <nav aria-label="Footer" className="md:col-span-2">
-          <h2 className="eyebrow font-sans text-clay">Explore</h2>
+          <h2 className="eyebrow font-sans text-brass">Explore</h2>
           <ul className="mt-4 space-y-2">
             {navLinks.map((l) => (
               <li key={l.href}>
@@ -31,7 +31,7 @@ export function Footer() {
           </ul>
         </nav>
         <div className="md:col-span-2">
-          <h2 className="eyebrow font-sans text-clay">Hours</h2>
+          <h2 className="eyebrow font-sans text-brass">Hours</h2>
           {site.hours ? (
             <ul className="mt-4 space-y-1 text-[0.9375rem] tabular-nums">
               {dayLabels.map(({ key, label }) => {
@@ -51,7 +51,7 @@ export function Footer() {
           )}
         </div>
         <div className="md:col-span-3">
-          <h2 className="eyebrow font-sans text-clay">Contact</h2>
+          <h2 className="eyebrow font-sans text-brass">Contact</h2>
           <address className="mt-4 not-italic">
             <p>{fullAddress}</p>
             <a href={`tel:${site.phoneInternational}`} className="mt-2 block underline-offset-4 hover:underline">
@@ -65,7 +65,7 @@ export function Footer() {
                   const Icon = socialIcons[name];
                   return (
                     <li key={name}>
-                      <a href={url} aria-label={name} className="flex size-11 items-center justify-center hover:text-clay">
+                      <a href={url} aria-label={name} className="flex size-11 items-center justify-center hover:text-brass">
                         <Icon size={24} weight="light" aria-hidden />
                       </a>
                     </li>
