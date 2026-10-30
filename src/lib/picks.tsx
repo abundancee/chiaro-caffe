@@ -25,6 +25,8 @@ interface PicksContextValue {
   setQuantity: (key: string, quantity: number) => void;
   setNote: (key: string, note: string) => void;
   clear: () => void;
+  table: string;
+  setTable: (table: string) => void;
 }
 
 const STORAGE_KEY = "chiaro-my-picks-v1";
@@ -39,6 +41,7 @@ export function PicksProvider({ children }: { children: ReactNode }) {
   const [bump, setBump] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [staffOpen, setStaffOpen] = useState(false);
+  const [table, setTable] = useState("");
 
   useEffect(() => {
     let restored: Pick[] = [];
@@ -108,8 +111,10 @@ export function PicksProvider({ children }: { children: ReactNode }) {
       setQuantity,
       setNote,
       clear,
+      table,
+      setTable,
     };
-  }, [stored, bump, ready, drawerOpen, staffOpen, add, setQuantity, setNote, clear]);
+  }, [stored, bump, ready, drawerOpen, staffOpen, add, setQuantity, setNote, clear, table]);
 
   return <PicksContext.Provider value={value}>{children}</PicksContext.Provider>;
 }

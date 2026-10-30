@@ -1,74 +1,115 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
+import { useRef } from "react";
+import { ArrowDownIcon, ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { Photo } from "@/components/ui/Photo";
+import { Mascot } from "@/components/ui/Mascot";
+import { useScene } from "@/lib/use-scene";
 import { site } from "@/data/site";
 
-// The photo starts full-bleed, then settles into the arch from the logo as you scroll.
+const letters = "CHIARO".split("");
+
+const stickers = [
+  { src: "/images/menu/croissant-plain.webp", alt: "Two golden croissants", pos: "left-[3%] top-[14%] w-[23vw] md:left-[5%] md:top-[17%] md:w-[10vw]", rot: -9, depth: 1.3 },
+  { src: "/images/menu/cappuccino.webp", alt: "A cappuccino", pos: "right-[4%] top-[12%] w-[21vw] md:right-[7%] md:top-[15%] md:w-[9vw]", rot: 8, depth: 0.8 },
+  { src: "/images/menu/strawberry-margarita.webp", alt: "A strawberry margarita", pos: "left-[6%] top-[34%] w-[21vw] md:left-auto md:right-[2.5%] md:top-[38%] md:w-[9vw]", rot: -7, depth: 1.5 },
+  { src: "/images/menu/margherita-perfection.webp", alt: "A margherita pizza", pos: "left-[42%] top-[11%] hidden w-[8vw] md:left-[20%] md:top-[12%] md:block", rot: 6, depth: 1 },
+  { src: "/images/menu/zaatar-manakish.webp", alt: "Zaatar manakish", pos: "left-[2.5%] top-[42%] hidden w-[8vw] md:block", rot: 11, depth: 1.1 },
+];
+
 export function Hero() {
   const root = useRef<HTMLElement>(null);
-  const frame = useRef<HTMLDivElement>(null);
-  const copy = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let revert = () => {};
-    let cancelled = false;
-    import("@/lib/gsap").then(({ gsap }) => {
-      if (cancelled) return;
-      const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline({
-          scrollTrigger: { trigger: root.current, start: "top top", end: "+=70%", scrub: 0.4, pin: true, anticipatePin: 1 },
-        });
-        tl.to(copy.current, { autoAlpha: 0, y: -28, duration: 0.45, ease: "none" }, 0).fromTo(
-          frame.current,
-          { clipPath: "inset(0% 0% 0% 0% round 0px 0px 0px 0px)" },
-          { clipPath: "inset(14% 14% 12% 14% round 400px 400px 8px 8px)", duration: 1, ease: "none" },
-          0,
-        );
-      });
-      revert = () => mm.revert();
+  useScene(root, ({ gsap }, el) => {
+    const q = gsap.utils.selector(el);
+    const tl = gsap.timeline({
+      scrollTrigger: { trigger: el, start: "top top", end: "+=75%", scrub: 0.5, pin: true, anticipatePin: 1 },
     });
-    return () => {
-      cancelled = true;
-      revert();
-    };
-  }, []);
+    // The sun sinks, letters burst apart at different speeds and stretch, stickers fly off.
+    tl.to(q("[data-sun]"), { yPercent: 75, scale: 1.5, ease: "none" }, 0)
+      .to(el, { backgroundColor: "#f8d778", ease: "none" }, 0)
+      .to(q("[data-copy]"), { y: -60, autoAlpha: 0, ease: "none", duration: 0.45 }, 0);
+    q<HTMLElement>("[data-letter]").forEach((l, i) => {
+      tl.to(l, { yPercent: (i % 2 ? -1 : 1) * (70 + i * 16), rotate: (i - 2.5) * 7, fontStretch: "125%", ease: "none" }, 0);
+    });
+    q<HTMLElement>("[data-sticker]").forEach((s, i) => {
+      const d = Number(s.dataset.depth);
+      tl.to(s, { x: (i % 2 ? 1 : -1) * 220 * d, y: -240 * d, rotate: (i % 2 ? 40 : -40), ease: "none" }, 0);
+    });
+
+    // Stickers lean toward the pointer on desktop.
+    if (window.matchMedia("(pointer: fine)").matches) {
+      const setters = q<HTMLElement>("[data-sticker-inner]").map((s) => ({
+        x: gsap.quickTo(s, "x", { duration: 0.8, ease: "power3" }),
+        y: gsap.quickTo(s, "y", { duration: 0.8, ease: "power3" }),
+        d: Number(s.dataset.depth),
+      }));
+      const move = (e: PointerEvent) => {
+        const px = e.clientX / window.innerWidth - 0.5;
+        const py = e.clientY / window.innerHeight - 0.5;
+        setters.forEach((s) => {
+          s.x(px * 46 * s.d);
+          s.y(py * 46 * s.d);
+        });
+      };
+      el.addEventListener("pointermove", move);
+    }
+  });
 
   return (
-    <section ref={root} aria-label="Welcome" className="on-dark relative h-[100svh] min-h-[34rem] overflow-hidden bg-espresso text-oat">
-      <div ref={frame} className="absolute inset-0">
-        <Photo
-          src="/images/site/hero.webp"
-          alt="Coffee pouring into a dark cup, lit against a black background"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[50%_60%] md:object-[50%_52%]"
-        />
-        <div aria-hidden className="absolute inset-x-0 bottom-0 h-3/5 bg-linear-to-t from-espresso/90 via-espresso/45 to-transparent" />
-        <div aria-hidden className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-espresso/60 to-transparent" />
-        <div aria-hidden className="absolute inset-y-0 left-0 hidden w-3/5 bg-linear-to-r from-espresso/80 via-espresso/45 to-transparent md:block" />
+    <section ref={root} aria-label="Welcome" className="relative flex h-[100svh] min-h-[38rem] flex-col justify-end overflow-hidden bg-cream pb-24 md:pb-10">
+      <div data-sun aria-hidden className="absolute left-[4vw] top-[9%] size-[92vw] md:left-[27vw] md:top-[6%] md:size-[46vw]">
+        <div className="sun-up size-full rounded-full bg-marmalade" />
       </div>
-      <div ref={copy} className="relative mx-auto flex h-full max-w-[110rem] flex-col justify-end px-4 pb-[max(2rem,env(safe-area-inset-bottom))] md:px-8 md:pb-14">
-        <h1 className="max-w-[13ch] text-display md:text-[clamp(3.5rem,6.6vw,7.5rem)]">{site.tagline}</h1>
-        <p className="mt-4 text-[0.9375rem] text-oat/85 md:text-lg">
-          {site.address.street}, {site.address.area}
+
+      {stickers.map((s, i) => (
+        <div key={s.src} data-sticker data-depth={s.depth} className={`absolute z-20 ${s.pos}`}>
+          <div data-sticker-inner data-depth={s.depth}>
+            <div className="pop sticker aspect-square" style={{ rotate: `${s.rot}deg`, ["--d" as string]: `${0.25 + i * 0.09}s` }}>
+              <Photo src={s.src} alt={s.alt} fill sizes="(min-width: 768px) 12vw, 24vw" className="object-cover" />
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <div className="relative z-20 mx-auto -mb-[3vw] w-fit translate-x-[24vw] md:-mb-[2vw] md:translate-x-[20vw]">
+        <div className="pop" style={{ ["--d" as string]: "0.55s" }}>
+          <Mascot className="bob w-[21vw] md:w-[8vw]" />
+        </div>
+      </div>
+
+      <h1 aria-label={`${site.name}. ${site.tagline}`} className="relative z-10 flex w-full justify-center overflow-hidden pb-[1vw] pt-2">
+        {letters.map((l, i) => (
+          <span key={i} aria-hidden data-letter className="display inline-block cursor-default text-[28.5vw] leading-[0.95] transition-[font-stretch] duration-300 hover:[font-stretch:92%] md:text-[25.5vw]">
+            <span className="rise" style={{ ["--d" as string]: `${i * 0.055}s` }}>
+              {l}
+            </span>
+          </span>
+        ))}
+      </h1>
+
+      <div data-copy className="relative z-30 mx-auto mt-4 flex w-full max-w-[100rem] flex-col gap-5 px-4 md:mt-2 md:flex-row md:items-end md:justify-between md:px-8">
+        <p className="display max-w-[15ch] text-[2.5rem] md:max-w-none md:text-[clamp(2.25rem,4vw,4rem)]">
+          From first <span className="accent text-[1.15em]">croissant</span>
+          <br />
+          to last <span className="accent text-[1.15em]">cocktail.</span>
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-6 md:mt-8">
-          <Link
-            href="/menu"
-            className="inline-flex h-13 items-center gap-3 rounded-card bg-oat px-6 font-medium text-espresso transition-colors hover:bg-white"
-          >
-            View menu <ArrowRightIcon size={18} aria-hidden />
+        <div className="flex flex-wrap items-center gap-3">
+          <Link href="/menu" className="btn bg-ink text-cream">
+            View menu <ArrowRightIcon size={18} weight="bold" aria-hidden />
           </Link>
-          <Link href="/#visit" className="border-b border-oat/70 pb-0.5 transition-colors hover:border-oat">
+          <Link href="/#visit" className="btn bg-butter text-ink">
             Find us
           </Link>
         </div>
       </div>
+
+      
+
+      <p aria-hidden className="absolute bottom-3 left-1/2 hidden -translate-x-1/2 items-center gap-1.5 text-[0.8125rem] font-semibold md:flex">
+        Scroll for the day <ArrowDownIcon size={14} weight="bold" />
+      </p>
     </section>
   );
 }

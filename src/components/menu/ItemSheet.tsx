@@ -9,6 +9,7 @@ import { usePicks } from "@/lib/picks";
 import { useModal } from "@/lib/use-modal";
 import { Photo } from "@/components/ui/Photo";
 import { QuantityStepper } from "@/components/ui/QuantityStepper";
+import { flyToBag } from "@/lib/fly";
 
 export function ItemSheet() {
   const { item, close } = useItemSheet();
@@ -32,6 +33,7 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
   useModal(true, onClose, ref);
   const desktop = useIsDesktop();
   const drag = useDragControls();
+  const photo = useRef<HTMLDivElement>(null);
   const { add } = usePicks();
   const [quantity, setQuantity] = useState(1);
   const [options, setOptions] = useState<Record<string, string>>({});
@@ -44,6 +46,7 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
       setMissing(needed.label);
       return;
     }
+    flyToBag(photo.current);
     add(item, quantity, options, note.trim());
     onClose();
   };
@@ -51,7 +54,7 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center md:items-center md:p-8">
       <m.div
-        className="absolute inset-0 bg-espresso/55"
+        className="absolute inset-0 bg-ink/60"
         onClick={onClose}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -73,7 +76,7 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
         onDragEnd={(_, info) => {
           if (info.offset.y > 110 || info.velocity.y > 500) onClose();
         }}
-        className="relative flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-sheet bg-paper shadow-float outline-none md:max-h-[86dvh] md:max-w-4xl md:flex-row md:rounded-sheet"
+        className="relative flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-sheet border-2 border-ink bg-cream outline-none md:max-h-[86dvh] md:max-w-4xl md:flex-row md:rounded-sheet"
         initial={desktop ? { opacity: 0, scale: 0.97, y: 12 } : { y: "100%" }}
         animate={desktop ? { opacity: 1, scale: 1, y: 0 } : { y: 0 }}
         exit={desktop ? { opacity: 0, scale: 0.98, y: 8 } : { y: "100%" }}
@@ -86,28 +89,28 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
           onPointerDown={(e) => drag.start(e)}
           className="absolute inset-x-0 top-0 z-10 flex h-7 touch-none justify-center pt-2.5 md:hidden"
         >
-          <span className="h-1 w-10 rounded-full bg-oat/90 shadow-[0_0_4px_#0005]" />
+          <span className="h-1 w-10 rounded-full bg-cream/90 shadow-[0_0_4px_#0005]" />
         </button>
         <button
           type="button"
           data-autofocus
           onClick={onClose}
           aria-label={`Close ${item.name}`}
-          className="absolute right-3 top-3 z-10 flex size-11 items-center justify-center rounded-full bg-paper/90 text-espresso transition-colors hover:bg-paper"
+          className="absolute right-3 top-3 z-10 flex size-11 items-center justify-center rounded-full border-2 border-ink bg-paper text-ink"
         >
-          <XIcon size={20} aria-hidden />
+          <XIcon size={20} weight="bold" aria-hidden />
         </button>
 
         <div className="min-h-0 flex-1 overflow-y-auto md:flex md:overflow-hidden">
-          <div className="relative aspect-[5/4] w-full shrink-0 bg-oat-2 md:aspect-auto md:w-[46%]">
+          <div ref={photo} className="relative aspect-[3/2] w-full shrink-0 bg-butter md:aspect-auto md:w-[42%]">
             <Photo src={item.image} alt={item.name} fill sizes="(min-width: 768px) 420px, 100vw" className="object-cover" />
           </div>
           <div className="px-5 pb-6 pt-5 md:flex-1 md:overflow-y-auto md:p-8 md:pb-24 md:pt-10">
-            {item.popular && <p className="mb-2 text-eyebrow text-roast">Popular</p>}
-            <h2 id="item-sheet-title" className="text-[2rem] leading-[1.1] md:pr-8 md:text-[2.5rem]">
+            {item.popular && <p className="eyebrow mb-2 text-roast">Popular</p>}
+            <h2 id="item-sheet-title" className="display text-[2.25rem] normal-case md:pr-8 md:text-[3rem]">
               {item.name}
             </h2>
-            <p className="mt-2 text-lg font-medium tabular-nums">{formatPrice(item.price)}</p>
+            <p className="mt-2 inline-block -rotate-1 rounded-full border-2 border-ink bg-butter px-3 py-0.5 text-lg font-bold tabular-nums">{formatPrice(item.price)}</p>
             {item.description && <p className="mt-4 text-roast">{item.description}</p>}
 
             {item.options?.map((o) => (
@@ -136,8 +139,8 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
                             return next;
                           });
                         }}
-                        className={`min-h-11 rounded-full border px-4 text-[0.9375rem] transition-colors ${
-                          selected ? "border-espresso bg-espresso text-oat" : "border-line hover:border-espresso"
+                        className={`min-h-11 rounded-full border-2 px-4 text-[0.9375rem] font-semibold transition-colors ${
+                          selected ? "border-ink bg-ink text-cream" : "border-ink hover:border-ink"
                         }`}
                       >
                         {c}
@@ -158,22 +161,22 @@ function Sheet({ item, onClose }: { item: MenuItem; onClose: () => void }) {
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Oat milk, extra hot"
                 maxLength={120}
-                className="mt-2 h-12 w-full rounded-card border border-line bg-transparent px-3 placeholder:text-roast/80"
+                className="mt-2 h-12 w-full rounded-full border-2 border-ink bg-paper px-4 placeholder:text-roast"
               />
             </div>
           </div>
         </div>
 
-        <div className="flex shrink-0 items-center gap-3 border-t border-line bg-paper px-4 py-3 md:absolute md:bottom-0 md:right-0 md:w-[54%] md:px-8 md:py-4">
+        <div className="flex shrink-0 items-center gap-3 border-t-2 border-ink bg-paper px-4 py-3 md:absolute md:bottom-0 md:right-0 md:w-[54%] md:px-8 md:py-4">
           <QuantityStepper value={quantity} onChange={setQuantity} label={item.name} size="sm" />
           <m.button
             type="button"
             whileTap={{ scale: 0.98 }}
             onClick={submit}
-            className="flex h-12 min-w-0 flex-1 items-center justify-between gap-2 whitespace-nowrap rounded-card bg-espresso px-4 text-[0.9375rem] text-oat transition-colors hover:bg-espresso-2"
+            className="flex h-12 min-w-0 flex-1 items-center justify-between gap-2 whitespace-nowrap rounded-full border-2 border-ink bg-marmalade px-4 text-[0.9375rem] font-bold text-ink"
           >
             <span>Add to my list</span>
-            <span className="tabular-nums text-oat/80">{formatPrice(item.price * quantity)}</span>
+            <span className="tabular-nums">{formatPrice(item.price * quantity)}</span>
           </m.button>
         </div>
       </m.div>

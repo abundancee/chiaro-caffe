@@ -378,7 +378,4 @@ export const menu: MenuCategory[] = [
 export const allItems: MenuItem[] = menu.flatMap((c) => c.sections.flatMap((s) => s.items));
 export const itemBySlug = (slug: string) => allItems.find((i) => i.slug === slug);
 
-// Hand-picked for the home page. Change the slugs to feature other items.
-export const signatureSlugs = ["nutella-strawberry-croissant", "pistachio-dream-latte", "mediterranean-bliss-salad", "the-chiaro-platter", "margherita-perfection", "strawberry-margarita"];
-
 export const formatPrice = (n: number) => `${n.toLocaleString("en-US")} NGN`;

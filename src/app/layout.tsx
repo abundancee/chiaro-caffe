@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Bodoni_Moda, Instrument_Sans } from "next/font/google";
+import { Anybody, DM_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/ui/Providers";
+import { Loader, loaderScript } from "@/components/ui/Loader";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
 import { dayLabels, site } from "@/data/site";
 import { siteUrl } from "@/lib/url";
 
-const bodoni = Bodoni_Moda({ subsets: ["latin"], variable: "--font-bodoni", axes: ["opsz"], display: "swap" });
-const instrument = Instrument_Sans({ subsets: ["latin"], variable: "--font-instrument", display: "swap" });
+const anybody = Anybody({ subsets: ["latin"], variable: "--font-anybody", axes: ["wdth"], weight: "variable", display: "swap" });
+const instrumentSerif = Instrument_Serif({ subsets: ["latin"], variable: "--font-instrument-serif", weight: "400", style: ["normal", "italic"], display: "swap" });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", weight: "variable", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
   appleWebApp: { title: "Chiaro", statusBarStyle: "default" },
 };
 
-export const viewport: Viewport = { themeColor: "#f6f2ea", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#fbf3e4", width: "device-width", initialScale: 1 };
 
 const dayNames: Record<string, string> = Object.fromEntries(dayLabels.map((d) => [d.key, d.label]));
 const structuredData = {
@@ -54,11 +56,15 @@ const structuredData = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${anybody.variable} ${instrumentSerif.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: loaderScript }} />
+      </head>
       <body>
+        <Loader />
         <a
           href="#main"
-          className="fixed left-3 top-3 z-[60] -translate-y-20 rounded-card bg-espresso px-4 py-2 text-oat transition-transform focus:translate-y-0"
+          className="fixed left-3 top-3 z-[60] -translate-y-20 rounded-full bg-ink px-4 py-2 text-cream transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>

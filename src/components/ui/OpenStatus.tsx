@@ -14,7 +14,7 @@ export function OpenStatus({ className = "" }: { className?: string }) {
   }, []);
   if (open === null) return null;
   return (
-    <span className={`inline-flex items-center gap-1.5 text-eyebrow ${className}`}>
+    <span className={`inline-flex items-center gap-1.5 text-[0.8125rem] font-semibold ${className}`}>
       <span aria-hidden className={`size-1.5 rounded-full ${open ? "bg-current" : "border border-current"}`} />
       {open ? "Open now" : "Closed"}
     </span>
